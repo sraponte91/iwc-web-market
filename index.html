@@ -305,8 +305,8 @@
         
         .card-r1 { left: calc(50% + 462.5px); top: 244.75px; }
         .card-r2 { left: calc(50% + 492px); top: 372.5px; }
-        .card-r3 { left: calc(50% + 492px); top: 523.5px; }
-        .card-r4 { left: calc(50% + 462.5px); top: 651.25px; }
+        .card-r3 { left: calc(50% + 462.5px); top: 651.25px; }
+
 
         /* Stack Section Styles */
         .hero-stack {
@@ -363,8 +363,7 @@
         .hero.hover-l3 .hero-tag-svg-3, .hero.hover-l3 .hero-tag-icon-3, .hero.hover-l3 .hero-tag-icon-label-3,
         .hero.hover-r1 .hero-tag-right-svg-1, .hero.hover-r1 .hero-tag-right-icon-1, .hero.hover-r1 .hero-tag-right-icon-label-1,
         .hero.hover-r2 .hero-tag-right-svg-2, .hero.hover-r2 .hero-tag-right-icon-2, .hero.hover-r2 .hero-tag-right-icon-label-2,
-        .hero.hover-r3 .hero-tag-right-svg-3, .hero.hover-r3 .hero-tag-right-icon-3, .hero.hover-r3 .hero-tag-right-icon-label-3,
-        .hero.hover-r4 .hero-tag-right-svg-4, .hero.hover-r4 .hero-tag-right-icon-4, .hero.hover-r4 .hero-tag-right-icon-label-4 {
+        .hero.hover-r3 .hero-tag-right-svg-3, .hero.hover-r3 .hero-tag-right-icon-3, .hero.hover-r3 .hero-tag-right-icon-label-3 {
             filter: none !important;
             opacity: 1 !important;
         }
@@ -377,7 +376,7 @@
         }
         /* Fallback for browsers that don't support :has() well, though it's 2024+ */
         .hero.hover-l1 .hero-tag, .hero.hover-l2 .hero-tag, .hero.hover-l3 .hero-tag,
-        .hero.hover-r1 .hero-tag-right, .hero.hover-r2 .hero-tag-right, .hero.hover-r3 .hero-tag-right, .hero.hover-r4 .hero-tag-right {
+        .hero.hover-r1 .hero-tag-right, .hero.hover-r2 .hero-tag-right, .hero.hover-r3 .hero-tag-right {
             filter: none;
             opacity: 1;
         }
@@ -407,9 +406,8 @@
         .dot-l2 { offset-path: path('M250.031 3.5H227.375C193.003 3.5 161.703 23.2928 146.968 54.3464L98.7782 155.904C84.0431 186.957 52.7434 206.75 18.3711 206.75H7.5'); }
         .dot-l3 { offset-path: path('M227.5 6.5H7.5'); }
         .dot-r1 { offset-path: path('M7.49998 206.75H30.1559C64.5281 206.75 95.8279 186.957 110.563 155.904L158.753 54.3464C173.488 23.2928 204.787 3.5 239.16 3.5H250.031'); }
-        .dot-r2 { offset-path: path('M7.5 79H55.7428C75.6303 79 94.9447 72.3391 110.604 60.08L158.711 22.42C174.371 10.1609 193.685 3.5 213.573 3.5H279.5'); }
-        .dot-r3 { offset-path: path('M7.5 3.5H55.7428C75.6303 3.5 94.9447 10.1609 110.604 22.42L158.711 60.08C174.371 72.3391 193.685 79 213.573 79H279.5'); }
-        .dot-r4 { offset-path: path('M7.49998 3.5H30.1559C64.5281 3.5 95.8279 23.2928 110.563 54.3464L158.753 155.904C173.488 186.957 204.787 206.75 239.16 206.75H250.031'); }
+        .dot-r2 { offset-path: path('M7.5 6.5H227.5'); }
+        .dot-r3 { offset-path: path('M7.49998 3.5H30.1559C64.5281 3.5 95.8279 23.2928 110.563 54.3464L158.753 155.904C173.488 186.957 204.787 206.75 239.16 206.75H250.031'); }
 
         @keyframes redrawLines {
             from { stroke-dashoffset: 1000; }
@@ -443,9 +441,8 @@
         .hero-tag-svg-3 { left: -227.5px; top: calc(50% - 6.5px); }
 
         .hero-tag-right-svg-1 { left: calc(100% - 7.5px); top: calc(50% - 206.75px); }
-        .hero-tag-right-svg-2 { left: calc(100% - 7.5px); top: calc(50% - 79px); }
+        .hero-tag-right-svg-2 { left: calc(100% - 7.5px); top: calc(50% - 6.5px); }
         .hero-tag-right-svg-3 { left: calc(100% - 7.5px); top: calc(50% - 3.5px); }
-        .hero-tag-right-svg-4 { left: calc(100% - 7.5px); top: calc(50% - 3.5px); }
 
         .hero-tag-svg path {
             stroke-dasharray: 1000;
@@ -457,17 +454,16 @@
         .hero-tag-svg-2 path { animation-delay: 0.4s; }
         .hero-tag-svg-3 path { animation-delay: 0.6s; animation-duration: 0.8s; }
 
-        .hero-tag-right-svg-1 path, .hero-tag-right-svg-4 path { animation-delay: 0.5s; animation-duration: 1.2s; }
-        .hero-tag-right-svg-2 path, .hero-tag-right-svg-3 path { animation-delay: 0.7s; animation-duration: 1.0s; }
+        .hero-tag-right-svg-1 path, .hero-tag-right-svg-3 path { animation-delay: 0.5s; animation-duration: 1.2s; }
+        .hero-tag-right-svg-2 path { animation-delay: 0.7s; animation-duration: 0.8s; }
 
         .hero-tag-icon-1 { left: -242.5px; top: calc(50% - 203.25px); animation: iconEntrance 0.5s ease-out 1.6s forwards; }
         .hero-tag-icon-2 { left: -242.5px; top: calc(50% + 203.25px); animation: iconEntrance 0.5s ease-out 1.6s forwards; }
         .hero-tag-icon-3 { left: -220px; top: 50%; animation: iconEntrance 0.5s ease-out 1.4s forwards; }
 
         .hero-tag-right-icon-1 { left: calc(100% + 242.5px); top: calc(50% - 203.25px); animation: iconEntrance 0.5s ease-out 1.7s forwards; }
-        .hero-tag-right-icon-2 { left: calc(100% + 272px); top: calc(50% - 75.5px); animation: iconEntrance 0.5s ease-out 1.7s forwards; }
-        .hero-tag-right-icon-3 { left: calc(100% + 272px); top: calc(50% + 75.5px); animation: iconEntrance 0.5s ease-out 1.7s forwards; }
-        .hero-tag-right-icon-4 { left: calc(100% + 242.5px); top: calc(50% + 203.25px); animation: iconEntrance 0.5s ease-out 1.7s forwards; }
+        .hero-tag-right-icon-2 { left: calc(100% + 220px); top: 50%; animation: iconEntrance 0.5s ease-out 1.5s forwards; }
+        .hero-tag-right-icon-3 { left: calc(100% + 242.5px); top: calc(50% + 203.25px); animation: iconEntrance 0.5s ease-out 1.7s forwards; }
 
         .hero-tag-icon-label-1 {
             left: -242.5px;
@@ -494,18 +490,12 @@
         }
 
         .hero-tag-right-icon-label-2 {
-            left: calc(100% + 272px);
-            top: calc(50% - 75.5px + 37px);
-            animation: labelEntrance 0.5s ease-out 1.7s forwards;
+            left: calc(100% + 220px);
+            top: calc(50% + 37px);
+            animation: labelEntrance 0.5s ease-out 1.5s forwards;
         }
 
         .hero-tag-right-icon-label-3 {
-            left: calc(100% + 272px);
-            top: calc(50% + 75.5px + 37px);
-            animation: labelEntrance 0.5s ease-out 1.7s forwards;
-        }
-
-        .hero-tag-right-icon-label-4 {
             left: calc(100% + 242.5px);
             top: calc(50% + 203.25px + 37px);
             animation: labelEntrance 0.5s ease-out 1.7s forwards;
@@ -596,7 +586,7 @@
                 </filter>
               </defs>
             </svg>
-            <div class="hero-tag-icon-label hero-tag-icon-label-1 hover-group" data-group="l1">website</div>
+            <div class="hero-tag-icon-label hero-tag-icon-label-1 hover-group" data-group="l1">Website</div>
             <div class="hero-line-dot hero-tag-svg-1 dot-l1" data-group="l1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
                   <circle cx="7.5" cy="7.5" r="5.5" fill="#FAFBFD" stroke="#7C95B0" stroke-width="4"/>
@@ -645,7 +635,7 @@
                 </filter>
               </defs>
             </svg>
-            <div class="hero-tag-icon-label hero-tag-icon-label-2 hover-group" data-group="l2">SEO &<br>AIO Setup</div>
+            <div class="hero-tag-icon-label hero-tag-icon-label-2 hover-group" data-group="l2">AI &amp; Search</div>
             <div class="hero-line-dot hero-tag-svg-2 dot-l2" data-group="l2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
                   <circle cx="7.5" cy="7.5" r="5.5" fill="#FAFBFD" stroke="#7C95B0" stroke-width="4"/>
@@ -747,7 +737,7 @@
                 </filter>
               </defs>
             </svg>
-            <div class="hero-tag-icon-label hero-tag-right-icon-label-1 hover-group" data-group="r1">SEO & AIO<br>Optimization</div>
+            <div class="hero-tag-icon-label hero-tag-right-icon-label-1 hover-group" data-group="r1">Maintenance</div>
             <div class="hero-line-dot hero-tag-right-svg-1 dot-r1" data-group="r1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
                   <circle cx="7.5" cy="7.5" r="5.5" fill="#FAFBFD" stroke="#7C95B0" stroke-width="4"/>
@@ -755,12 +745,12 @@
             </div>
 
             <!-- Group R2 -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="287" height="95" viewBox="0 0 287 95" fill="none" class="hero-tag-svg hero-tag-right-svg-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="235" height="19" viewBox="0 0 235 19" fill="none" class="hero-tag-svg hero-tag-right-svg-2">
               <g filter="url(#filter0_d_9320_2499)">
-                <path d="M7.5 79H55.7428C75.6303 79 94.9447 72.3391 110.604 60.08L158.711 22.42C174.371 10.1609 193.685 3.5 213.573 3.5H279.5" stroke="url(#paint0_linear_9320_2499)" stroke-width="4" class="hover-group" data-group="r2"/>
+                <path d="M7.5 6.5H227.5" stroke="url(#paint0_linear_9320_2499)" stroke-width="4" class="hover-group" data-group="r2"/>
               </g>
               <defs>
-                <filter id="filter0_d_9320_2499" x="0" y="0" width="287" height="94.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <filter id="filter0_d_9320_2499" x="0" y="0" width="235" height="19" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                   <feFlood flood-opacity="0" result="BackgroundImageFix"/>
                   <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                   <feOffset dy="6"/>
@@ -770,7 +760,7 @@
                   <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_9320_2499"/>
                   <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_9320_2499" result="shape"/>
                 </filter>
-                <linearGradient id="paint0_linear_9320_2499" x1="7.49993" y1="25.128" x2="311.342" y2="25.128" gradientUnits="userSpaceOnUse">
+                <linearGradient id="paint0_linear_9320_2499" x1="7.49993" y1="7.23495" x2="283.115" y2="7.23495" gradientUnits="userSpaceOnUse">
                   <stop stop-color="#4A8628"/>
                   <stop offset="1" stop-color="#EDFFE2"/>
                 </linearGradient>
@@ -805,12 +795,12 @@
             </div>
 
             <!-- Group R3 -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="287" height="95" viewBox="0 0 287 95" fill="none" class="hero-tag-svg hero-tag-right-svg-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="258" height="223" viewBox="0 0 258 223" fill="none" class="hero-tag-svg hero-tag-right-svg-3">
               <g filter="url(#filter0_d_9320_2500)">
-                <path d="M7.5 3.5H55.7428C75.6303 3.5 94.9447 10.1609 110.604 22.42L158.711 60.08C174.371 72.3391 193.685 79 213.573 79H279.5" stroke="url(#paint0_linear_9320_2500)" stroke-width="4" class="hover-group" data-group="r3"/>
+                <path d="M7.49998 3.5H30.1559C64.5281 3.5 95.8279 23.2928 110.563 54.3464L158.753 155.904C173.488 186.957 204.787 206.75 239.16 206.75H250.031" stroke="url(#paint0_linear_9320_2500)" stroke-width="4" class="hover-group" data-group="r3"/>
               </g>
               <defs>
-                <filter id="filter0_d_9320_2500" x="0" y="0" width="287" height="94.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <filter id="filter0_d_9320_2500" x="0" y="0" width="257.531" height="222.25" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                   <feFlood flood-opacity="0" result="BackgroundImageFix"/>
                   <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                   <feOffset dy="6"/>
@@ -866,56 +856,6 @@
                 </svg>
             </div>
 
-            <!-- Group R4 -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="258" height="223" viewBox="0 0 258 223" fill="none" class="hero-tag-svg hero-tag-right-svg-4">
-              <g filter="url(#filter0_d_9320_2501)">
-                <path d="M7.49998 3.5H30.1559C64.5281 3.5 95.8279 23.2928 110.563 54.3464L158.753 155.904C173.488 186.957 204.787 206.75 239.16 206.75H250.031" stroke="url(#paint0_linear_9320_2501)" stroke-width="4" class="hover-group" data-group="r4"/>
-              </g>
-              <defs>
-                <filter id="filter0_d_9320_2501" x="0" y="0" width="257.531" height="222.25" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                  <feOffset dy="6"/>
-                  <feGaussianBlur stdDeviation="3.75"/>
-                  <feComposite in2="hardAlpha" operator="out"/>
-                  <feColorMatrix type="matrix" values="0 0 0 0 0.827233 0 0 0 0 1 0 0 0 0 0.687988 0 0 0 1 0"/>
-                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_9320_2501"/>
-                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_9320_2501" result="shape"/>
-                </filter>
-                <linearGradient id="paint0_linear_9320_2501" x1="7.49993" y1="57.372" x2="311.342" y2="57.372" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#4A8628"/>
-                  <stop offset="1" stop-color="#EDFFE2"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="66" viewBox="0 0 64 66" fill="none" class="hero-tag-icon hero-tag-right-icon-4 hover-group" data-group="r4">
-              <circle cx="32" cy="32" r="32" fill="#B3D4A0"/>
-              <g filter="url(#filter0_d_9320_2520)">
-                <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
-              </g>
-              <rect x="17.5" y="19.5" width="29" height="24" rx="2.5" stroke="#6A7661" stroke-width="3"/>
-              <path d="M18 25H45" stroke="#6A7661" stroke-width="3" stroke-linecap="round"/>
-              <path d="M28.5 31L25 35L28.5 38.5" stroke="#6A7661" stroke-width="3" stroke-linecap="round"/>
-              <path d="M36 38.5L39.5 34.5L36 31" stroke="#6A7661" stroke-width="3" stroke-linecap="round"/>
-              <defs>
-                <filter id="filter0_d_9320_2520" x="2" y="6" width="60" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                  <feOffset dy="4"/>
-                  <feGaussianBlur stdDeviation="2"/>
-                  <feComposite in2="hardAlpha" operator="out"/>
-                  <feColorMatrix type="matrix" values="0 0 0 0 0.290196 0 0 0 0 0.52549 0 0 0 0 0.156863 0 0 0 0.61 0"/>
-                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_9320_2520"/>
-                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_9320_2520" result="shape"/>
-                </filter>
-              </defs>
-            </svg>
-            <div class="hero-tag-icon-label hero-tag-right-icon-label-4 hover-group" data-group="r4">Maintenance</div>
-            <div class="hero-line-dot hero-tag-right-svg-4 dot-r4" data-group="r4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
-                  <circle cx="7.5" cy="7.5" r="5.5" fill="#FAFBFD" stroke="#7C95B0" stroke-width="4"/>
-                </svg>
-            </div>
             Ongoing
         </div>
 
@@ -1233,8 +1173,8 @@
                     <path d="M31.628 30.0035L31.7764 30.0162L35.0342 30.3776L35.5567 30.4361L45.4288 40.3082C47.1191 41.9986 47.1191 44.739 45.4288 46.4293C43.7384 48.1197 40.998 48.1197 39.3077 46.4293L29.4356 36.5572L29.377 36.0348L29.0157 32.777C28.8443 31.2344 30.1015 29.9229 31.628 30.0035ZM32.3008 35.1803L41.4288 44.3082C41.9476 44.827 42.7889 44.827 43.3077 44.3082C43.8265 43.7894 43.8265 42.9481 43.3077 42.4293L34.1797 33.3014L32.0655 33.066L32.3008 35.1803Z" fill="#616876"/>
                 </svg>
             </div>
-            <h3 class="card-title">AI &amp; Search</h3>
-            <p class="card-text">Metadata, structured data, and AI-ready structure built into the foundation—so your pages are properly understood across search and AI platforms.</p>
+            <h3 class="card-title">Maintenance</h3>
+            <p class="card-text">Secure hosting, platform updates, performance tuning, and technical management—handled monthly with nothing required on your end.</p>
         </div>
 
         <div class="hero-card card-r1 hover-group" data-group="r1">
@@ -1284,22 +1224,6 @@
             <p class="card-text">Each month, we improve one priority page—new or existing. Includes content updates, SEO improvements, AI structure tuning, and UX adjustments to increase conversions.</p>
         </div>
 
-        <div class="hero-card card-r4 hover-group" data-group="r4">
-            <div class="card-icon">
-                <svg width="64" height="66" viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="32" cy="32" r="32" fill="#B3D4A0"/>
-                    <g filter="url(#filter0_d_9320_2520)">
-                        <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
-                    </g>
-                    <rect x="17.5" y="19.5" width="29" height="24" rx="2.5" stroke="#6A7661" stroke-width="3"/>
-                    <path d="M18 25H45" stroke="#6A7661" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M28.5 31L25 35L28.5 38.5" stroke="#6A7661" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M36 38.5L39.5 34.5L36 31" stroke="#6A7661" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <h3 class="card-title">Maintenance</h3>
-            <p class="card-text">Secure hosting, platform updates, performance tuning, and technical management—handled monthly with nothing required on your end.</p>
-        </div>
     </section>
     <script>
         const hero = document.querySelector('.hero');
