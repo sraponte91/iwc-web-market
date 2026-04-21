@@ -233,6 +233,9 @@
             border-radius: 24px;
             padding: 32px;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
             z-index: 2000;
             opacity: 0;
@@ -254,18 +257,20 @@
         /* Hide icon and label when card is active */
         .hero.is-hovering .hero-tag-icon.hover-active {
             opacity: 0 !important;
-            transform: translate(-50%, -50%) scale(0) !important;
+            /* Keep geometry stable to avoid Chrome hover thrash */
+            transform: translate(-50%, -50%) scale(1) !important;
         }
         
         .hero.is-hovering .hero-tag-icon-label.hover-active {
             opacity: 0 !important;
-            transform: translate(-50%, 0) scale(0) !important;
+            /* Keep geometry stable to avoid Chrome hover thrash */
+            transform: translate(-50%, 0) scale(1) !important;
         }
 
         .card-icon {
             width: 64px;
             height: 64px;
-            margin-bottom: 16px;
+            margin-bottom: 0;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -279,9 +284,9 @@
 
         .card-title {
             color: #263A62;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
-            margin: 0 0 12px 0;
+            margin: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
@@ -1198,7 +1203,7 @@
                 </svg>
             </div>
             <h3 class="card-title">Website</h3>
-            <p class="card-text">Custom-built, mobile-first, and conversion-focused. Every site designed around how your customers actually find and choose you.</p>
+            <p class="card-text">Custom-built, mobile-first, and conversion-focused—designed around how your customers actually find and choose you.</p>
         </div>
 
         <div class="hero-card card-l3 hover-group" data-group="l3">
@@ -1214,7 +1219,7 @@
                 </svg>
             </div>
             <h3 class="card-title">Content</h3>
-            <p class="card-text">Content written for how people actually search — and how AI engines and search engines read. Built to be found, understood, and cited.</p>
+            <p class="card-text">Content written for how people search—and how AI and search engines interpret it. Built to be found, understood, and cited.</p>
         </div>
 
         <div class="hero-card card-l2 hover-group" data-group="l2">
@@ -1228,8 +1233,8 @@
                     <path d="M31.628 30.0035L31.7764 30.0162L35.0342 30.3776L35.5567 30.4361L45.4288 40.3082C47.1191 41.9986 47.1191 44.739 45.4288 46.4293C43.7384 48.1197 40.998 48.1197 39.3077 46.4293L29.4356 36.5572L29.377 36.0348L29.0157 32.777C28.8443 31.2344 30.1015 29.9229 31.628 30.0035ZM32.3008 35.1803L41.4288 44.3082C41.9476 44.827 42.7889 44.827 43.3077 44.3082C43.8265 43.7894 43.8265 42.9481 43.3077 42.4293L34.1797 33.3014L32.0655 33.066L32.3008 35.1803Z" fill="#616876"/>
                 </svg>
             </div>
-            <h3 class="card-title">Search</h3>
-            <p class="card-text">On-page SEO, schema, and AI-ready structure built in from day one — so your pages get found and cited across search engines and AI engines.</p>
+            <h3 class="card-title">AI &amp; Search</h3>
+            <p class="card-text">Metadata, structured data, and AI-ready structure built into the foundation—so your pages are properly understood across search and AI platforms.</p>
         </div>
 
         <div class="hero-card card-r1 hover-group" data-group="r1">
@@ -1244,8 +1249,8 @@
                     <path d="M31 18C33.0963 18 35.0766 18.4966 36.8301 19.3779C36.0046 19.9874 35.3941 20.8719 35.1357 21.8965C33.8749 21.3228 32.4755 21 31 21C25.4772 21 21 25.4772 21 31C21 36.5228 25.4772 41 31 41C35.7903 41 39.7907 37.6311 40.7686 33.1338L42.0703 31.9141C42.5822 32.3537 43.1942 32.6795 43.8672 32.8545C42.9671 39.1557 37.55 44 31 44C23.8203 44 18 38.1797 18 31C18 23.8203 23.8203 18 31 18Z" fill="#6A7661"/>
                 </svg>
             </div>
-            <h3 class="card-title">SEO & AIO Optimization</h3>
-            <p class="card-text">On-page SEO, schema, and AI-ready structure built in from day one — so your pages get found and cited across search engines and AI engines.</p>
+            <h3 class="card-title">AI &amp; Search</h3>
+            <p class="card-text">Metadata, structured data, and AI-ready structure built into the foundation—so your pages are properly understood across search and AI platforms.</p>
         </div>
 
         <div class="hero-card card-r2 hover-group" data-group="r2">
@@ -1261,7 +1266,7 @@
                 </svg>
             </div>
             <h3 class="card-title">Maps</h3>
-            <p class="card-text">Google Business Profile built and maintained to pursue the local 3-Pack. Includes Apple Maps and Bing Places.</p>
+            <p class="card-text">Google Business Profile and Maps optimization to improve visibility in the local 3-Pack—plus Apple Maps and Bing Places.</p>
         </div>
 
         <div class="hero-card card-r3 hover-group" data-group="r3">
@@ -1275,8 +1280,8 @@
                     <path d="M32.5002 32C33.3284 32.0002 34.0002 32.6717 34.0002 33.5V41.5C34.0002 42.3283 33.3284 42.9998 32.5002 43C31.6717 43 31.0002 42.3284 31.0002 41.5V36.2764L30.3478 37.0742C30.1273 37.3436 29.7975 37.5 29.4494 37.5C28.4702 37.4998 27.9308 36.3615 28.551 35.6035L31.1515 32.4258C31.372 32.1563 31.7018 32 32.05 32C32.2013 32 32.3486 32 32.5002 32Z" fill="#6A7661"/>
                 </svg>
             </div>
-            <h3 class="card-title">Monthly Optimization</h3>
-            <p class="card-text">One page improved every month — new, existing, or homepage — based on real GA4 and search data.</p>
+            <h3 class="card-title">Optimization</h3>
+            <p class="card-text">Each month, we improve one priority page—new or existing. Includes content updates, SEO improvements, AI structure tuning, and UX adjustments to increase conversions.</p>
         </div>
 
         <div class="hero-card card-r4 hover-group" data-group="r4">
@@ -1292,8 +1297,8 @@
                     <path d="M36 38.5L39.5 34.5L36 31" stroke="#6A7661" stroke-width="3" stroke-linecap="round"/>
                 </svg>
             </div>
-            <h3 class="card-title">Maintenance & Performance</h3>
-            <p class="card-text">Secure hosting, platform updates, speed tuning, and technical management — included every month, nothing to manage on your end.</p>
+            <h3 class="card-title">Maintenance</h3>
+            <p class="card-text">Secure hosting, platform updates, performance tuning, and technical management—handled monthly with nothing required on your end.</p>
         </div>
     </section>
     <script>
@@ -1319,52 +1324,78 @@
             cursorMask.style.setProperty('--cursor-y', `-100%`);
         });
 
-        // Hover effects for groups
-        const hoverGroups = document.querySelectorAll('.hover-group');
+        // Hover effects for groups (delegated to avoid cross-element flicker in Chrome)
         const heroSection = document.querySelector('.hero');
+        let activeGroup = null;
 
-        hoverGroups.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                const group = el.getAttribute('data-group');
-                heroSection.classList.add('is-hovering');
-                heroSection.classList.add(`hover-${group}`);
-                
-                // Activate the corresponding card
-                const card = document.querySelector(`.card-${group}`);
-                if (card) card.classList.add('active');
+        function setGroupActive(group) {
+            if (!group || activeGroup === group) return;
 
-                // Hide the corresponding icon and label
-                const currentGroupEls = document.querySelectorAll(`[data-group="${group}"]`);
-                currentGroupEls.forEach(item => {
-                    if (item.classList.contains('hero-tag-icon') || item.classList.contains('hero-tag-icon-label')) {
-                        item.classList.add('hover-active');
-                    }
-                });
-                
-                // Activate the corresponding dot
-                const dot = document.querySelector(`.dot-${group}`);
-                if (dot) dot.classList.add('active');
+            if (activeGroup) {
+                clearGroupActive(activeGroup);
+            }
+
+            activeGroup = group;
+            heroSection.classList.add('is-hovering');
+            heroSection.classList.add(`hover-${group}`);
+
+            const card = document.querySelector(`.card-${group}`);
+            if (card) card.classList.add('active');
+
+            const currentGroupEls = document.querySelectorAll(`[data-group="${group}"]`);
+            currentGroupEls.forEach(item => {
+                if (item.classList.contains('hero-tag-icon') || item.classList.contains('hero-tag-icon-label')) {
+                    item.classList.add('hover-active');
+                }
             });
 
-            el.addEventListener('mouseleave', () => {
-                const group = el.getAttribute('data-group');
+            const dot = document.querySelector(`.dot-${group}`);
+            if (dot) dot.classList.add('active');
+        }
+
+        function clearGroupActive(group) {
+            if (!group) return;
+
+            heroSection.classList.remove('hover-' + group);
+
+            const card = document.querySelector(`.card-${group}`);
+            if (card) card.classList.remove('active');
+
+            const currentGroupEls = document.querySelectorAll(`[data-group="${group}"]`);
+            currentGroupEls.forEach(item => {
+                item.classList.remove('hover-active');
+            });
+
+            const dot = document.querySelector(`.dot-${group}`);
+            if (dot) dot.classList.remove('active');
+
+            if (activeGroup === group) {
+                activeGroup = null;
                 heroSection.classList.remove('is-hovering');
-                heroSection.classList.remove(`hover-${group}`);
-                
-                // Deactivate the corresponding card
-                const card = document.querySelector(`.card-${group}`);
-                if (card) card.classList.remove('active');
+            }
+        }
 
-                // Restore the corresponding icon and label
-                const currentGroupEls = document.querySelectorAll(`[data-group="${group}"]`);
-                currentGroupEls.forEach(item => {
-                    item.classList.remove('hover-active');
-                });
-                
-                // Deactivate the corresponding dot
-                const dot = document.querySelector(`.dot-${group}`);
-                if (dot) dot.classList.remove('active');
-            });
+        heroSection.addEventListener('mouseover', (e) => {
+            const target = e.target.closest('.hover-group');
+            if (!target) return;
+
+            const group = target.getAttribute('data-group');
+            setGroupActive(group);
+        });
+
+        heroSection.addEventListener('mouseout', (e) => {
+            if (!activeGroup) return;
+
+            const fromEl = e.target.closest('.hover-group');
+            if (!fromEl || fromEl.getAttribute('data-group') !== activeGroup) return;
+
+            const toEl = e.relatedTarget ? e.relatedTarget.closest('.hover-group') : null;
+            const toGroup = toEl ? toEl.getAttribute('data-group') : null;
+
+            // Keep active when moving within the same group.
+            if (toGroup === activeGroup) return;
+
+            clearGroupActive(activeGroup);
         });
     </script>
 </body>
