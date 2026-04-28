@@ -533,6 +533,170 @@
             margin: 0 auto;
         }
     </style>
+
+    <!-- Mobile hero styles — desktop CSS above is untouched -->
+    <style>
+        .mob-hero { display: none; }
+
+        @media (max-width: 767px) {
+            /* Hide all desktop-only elements */
+            .hero-tag, .hero-tag-right, .hero-center-svg,
+            .hero-stack, .hero-cursor-mask, .hero-card,
+            .hero-container, .mobile-section-header { display: none !important; }
+
+            .hero {
+                height: auto !important;
+                padding: 0 !important;
+                flex-direction: column;
+                align-items: stretch;
+                overflow: visible !important;
+            }
+
+            /* Mobile hero wrapper */
+            .mob-hero {
+                display: block;
+                width: 100%;
+                min-height: 100dvh;
+                background: #F4F7FB;
+                position: relative;
+                overflow: hidden;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                padding: 52px 0 44px;
+                box-sizing: border-box;
+            }
+
+            .mob-dotbg {
+                position: absolute; inset: 0; pointer-events: none;
+                background-image: radial-gradient(circle, #C8D3E2 1px, transparent 1px);
+                background-size: 14px 14px;
+                mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+                -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+                opacity: 0.55;
+            }
+
+            .mob-inner {
+                position: relative;
+                display: flex; flex-direction: column; align-items: center;
+                padding: 0 16px; box-sizing: border-box;
+            }
+
+            /* Title */
+            .mob-h1 {
+                margin: 0 0 28px;
+                font-weight: 800; font-size: 30px; line-height: 1.08;
+                letter-spacing: -0.8px; color: #0F2B4E; text-align: center;
+            }
+            .mob-h1 .accent { color: #5A9E2F; }
+            .mob-desc {
+                margin: -14px auto 28px; max-width: 300px;
+                font-size: 14px; line-height: 1.5; color: #5B6B80; text-align: center;
+            }
+
+            /* Mind-map column */
+            .mob-mindmap { display: flex; flex-direction: column; align-items: center; width: 100%; }
+
+            /* Node rows */
+            .mob-nodes-row {
+                display: grid; width: 343px; justify-items: center;
+            }
+            .mob-nodes-top    { grid-template-columns: 1fr 1fr 1fr; margin-bottom: -6px; }
+            .mob-nodes-top .mob-node { flex-direction: column-reverse; }
+            .mob-nodes-bottom { grid-template-columns: 1fr 1fr 1fr; margin-top: -6px; margin-bottom: 28px; }
+
+            .mob-node {
+                display: flex; flex-direction: column; align-items: center;
+                gap: 6px; cursor: pointer; position: relative;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .mob-node-icon {
+                width: 54px; height: 54px; border-radius: 50%;
+                display: flex; align-items: center; justify-content: center;
+                transition: transform 0.15s ease; position: relative; z-index: 2;
+            }
+            .mob-node.active .mob-node-icon { transform: scale(0.92); }
+
+            .mob-node svg { width: 54px; height: 54px; }
+
+            .mob-node-label {
+                font-size: 14px; font-weight: 500; color: #14213D;
+                letter-spacing: 0.1px; white-space: nowrap; text-align: center;
+            }
+
+            /* Connectors */
+            .mob-connector { display: block; width: 343px; overflow: visible; }
+
+            @keyframes mob-flow { to { stroke-dashoffset: -130; } }
+
+            /* Pills */
+            .mob-pill {
+                padding: 7px 16px; border-radius: 999px;
+                font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+                color: #fff; white-space: nowrap; position: relative; z-index: 3;
+            }
+            .mob-pill-navy  { background: #0F2B4E; box-shadow: 0 4px 12px rgba(15,43,78,0.4); margin-top: -14px; margin-bottom: 4px; }
+            .mob-pill-green { background: #5A9E2F; box-shadow: 0 4px 12px rgba(90,158,47,0.4); margin-top: 4px; margin-bottom: -14px; }
+
+            /* Hub */
+            .mob-hub { position: relative; z-index: 3; margin: 4px 0; animation: mob-pulse 4s ease-in-out infinite; }
+            @keyframes mob-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
+
+            /* Cards — fixed centered overlay */
+            .mob-backdrop {
+                display: none; position: fixed; inset: 0;
+                background: rgba(0,0,0,0.35); z-index: 99;
+            }
+            .mob-backdrop.active { display: block; }
+            .mob-card {
+                display: none; position: fixed;
+                top: 50%; left: 50%; transform: translate(-50%, -50%);
+                width: 311px; z-index: 100;
+                background: #fff; border-radius: 20px; padding: 22px;
+                box-sizing: border-box;
+                box-shadow: 0 20px 48px -10px rgba(0,0,0,0.22);
+                border: 1px solid rgba(233,238,244,0.6);
+                flex-direction: column; gap: 4px;
+            }
+            .mob-card.active { display: flex; }
+            .mob-card-close {
+                position: absolute; top: 14px; right: 14px;
+                width: 28px; height: 28px; border-radius: 50%;
+                background: #F0F4F8; border: none; cursor: pointer;
+                display: flex; align-items: center; justify-content: center;
+                color: #6B7A8F; padding: 0;
+            }
+            .mob-card-close:active { background: #E3E8F0; }
+            .mob-card-icon { width: 56px; height: 56px; margin-bottom: 4px; }
+            .mob-card-icon svg { width: 56px; height: 56px; }
+            .mob-card-title { color: #263A62; font-size: 16px; font-weight: 700; margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+            .mob-card-text  { color: #616876; font-size: 14px; line-height: 1.6; margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+            /* Stack row */
+            .mob-stack { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 4px; }
+            .mob-stack-label {
+                padding: 5px 14px; border-radius: 999px; background: #fff;
+                border: 1px solid #E3E8F0; font-size: 11px; font-weight: 600;
+                color: #14213D; letter-spacing: 0.3px;
+                box-shadow: 0 1px 3px rgba(15,43,78,0.06);
+            }
+            .mob-stack-icons-wrap { position: relative; width: 311px; height: 44px; }
+            .mob-stack-hline {
+                position: absolute; top: 50%; left: 14px; right: 14px;
+                height: 1px; background: #D7DEE8;
+            }
+            .mob-stack-row {
+                position: relative; display: flex; justify-content: space-between;
+                align-items: center; height: 100%;
+            }
+            .mob-stack-ic {
+                width: 28px; height: 28px; border-radius: 7px; background: #fff;
+                border: 1px solid #E3E8F0;
+                display: flex; align-items: center; justify-content: center;
+                box-shadow: 0 1px 2px rgba(15,43,78,0.05);
+            }
+            .mob-stack-ic svg { width: 15px; height: 15px; opacity: 0.4; }
+        }
+    </style>
 </head>
 <body>
 <section class="hero">
@@ -1228,6 +1392,310 @@
         <p class="card-text">Each month, we improve one priority page—new or existing. Includes content updates, SEO improvements, AI structure tuning, and UX adjustments to increase conversions.</p>
     </div>
 
+    <!-- ═══════════════════════════════════════════
+         MOBILE HERO  (hidden on desktop via CSS)
+         ═══════════════════════════════════════════ -->
+    <div class="mob-hero">
+        <div class="mob-dotbg"></div>
+        <div id="mob-backdrop" class="mob-backdrop"></div>
+        <style>@keyframes mob-flow{to{stroke-dashoffset:-130}}</style>
+
+        <div class="mob-inner">
+
+            <!-- Title -->
+            <h1 class="mob-h1">Website &amp; Marketing<br>Built as <span class="accent">One System</span></h1>
+            <p class="mob-desc">Your website and marketing aren't separate, they are the same thing. Maps, Ads, AI, and SEO all depend on how the site is built</p>
+
+            <div class="mob-mindmap">
+
+                <!-- ── Top nodes: Initial Build inputs ── -->
+                <div class="mob-nodes-row mob-nodes-top">
+                    <!-- Website -->
+                    <div class="mob-node" id="mn-l1">
+                        <div class="mob-node-icon">
+                            <svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="32" fill="#0898D7"/>
+                                <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
+                                <path d="M48.6055 35.0322L40.0137 38.9365L35.6855 48.3135L29 29L48.6055 35.0322ZM36.083 40.292L37.5225 37.1738L37.7568 36.668L40.1641 35.5732L33.7686 33.6055L36.083 40.292Z" fill="#616876"/>
+                                <path d="M32 16C41.6 16.78 48 23.65 48 32C48 32.07 47.998 32.14 47.997 32.21L44.98 31.29C44.9 29.77 44.56 28.33 44.003 27H40.32C40.58 27.96 40.78 28.97 40.89 30.03L37.72 29.05C37.58 28.34 37.41 27.66 37.19 27H31.05L24.85 25.09L26.61 30.18C26.54 30.78 26.5 31.38 26.5 32C26.5 34.05 26.85 35.88 27.4 37.5H29.14L30.18 40.5H28.74C29.61 42.07 30.62 43.34 31.5 44.32L32.77 47.98C32.51 47.99 32.26 48 32 48C22.78 47.61 16 40.6 16 32C16 23.4 22.78 16.39 31.28 16.02C31.73 16 32 16 32 16ZM22.17 40.5C23.61 42.16 25.46 43.46 27.57 44.22C26.8 43.16 26.03 41.92 25.37 40.5H22.17ZM20 27C19.36 28.54 19 30.23 19 32C19 33.97 19.44 35.83 20.22 37.5H24.26C23.79 35.85 23.5 34.01 23.5 32C23.5 30.22 23.76 28.55 24.18 27H20ZM27.67 19.74C25.31 20.57 23.27 22.07 21.76 24H25.25C25.96 22.38 26.82 20.94 27.67 19.74ZM32.14 19C31.08 20.12 29.7 21.84 28.57 24H35.93C34.8 21.84 33.42 20.13 32.37 19.01C32.29 19 32.21 19 32.14 19ZM37.01 20C37.8 21.15 38.59 22.49 39.25 24H42.24C40.88 22.26 39.08 20.87 37.01 20Z" fill="#616876"/>
+                            </svg>
+                        </div>
+                        <span class="mob-node-label">Website</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="mob-node" id="mn-l3">
+                        <div class="mob-node-icon">
+                            <svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="32" fill="#0897D6"/>
+                                <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
+                                <path d="M42.5 18C45.54 18 48 20.46 48 23.5V34.5C48 35.33 47.33 36 46.5 36C45.67 36 45 35.33 45 34.5V27.5H19V40C19 41.38 20.12 42.5 21.5 42.5H31.5C32.33 42.5 33 43.17 33 44C33 44.83 32.33 45.5 31.5 45.5H21.5C18.46 45.5 16 43.04 16 40V23.5C16 20.46 18.46 18 21.5 18H42.5ZM21.5 21C20.12 21 19 22.12 19 23.5V24.5H45V23.5C45 22.12 43.88 21 42.5 21H21.5Z" fill="#616876"/>
+                                <path d="M31.63 30L31.78 30.02L35.03 30.38L35.56 30.44L45.43 40.31C47.12 42 47.12 44.74 45.43 46.43C43.74 48.12 41 48.12 39.31 46.43L29.44 36.56L29.38 36.03L29.02 32.78C28.84 31.23 30.1 29.92 31.63 30ZM32.3 35.18L41.43 44.31C41.95 44.83 42.79 44.83 43.31 44.31C43.83 43.79 43.83 42.95 43.31 42.43L34.18 33.3L32.07 33.07L32.3 35.18Z" fill="#616876"/>
+                            </svg>
+                        </div>
+                        <span class="mob-node-label">Content</span>
+                    </div>
+                    <!-- AI & Search -->
+                    <div class="mob-node" id="mn-l2">
+                        <div class="mob-node-icon">
+                            <svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="32" fill="#0897D6"/>
+                                <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
+                                <path d="M45.56 44.44C46.15 45.03 46.15 45.97 45.56 46.56C44.97 47.15 44.03 47.15 43.44 46.56L37.44 40.56L39.56 38.44L45.56 44.44Z" fill="#616876"/>
+                                <path d="M45 20C46.66 20 48 21.34 48 23V28.5C48 30.16 46.66 31.5 45 31.5C43.77 31.5 42.71 30.76 42.25 29.69L39.05 32.69C38.29 33.4 37.21 33.67 36.21 33.39L32.49 32.38L29.23 36.01C28.12 37.24 26.22 37.34 24.99 36.23C23.76 35.12 23.66 33.22 24.77 31.99L29.27 26.99C30.03 26.15 31.2 25.81 32.29 26.11L36.17 27.16L37.9 25.54C37.06 25.01 36.5 24.07 36.5 23C36.5 21.34 37.84 20 39.5 20H45Z" fill="#616876" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M31 18C33.1 18 35.08 18.5 36.83 19.38C36 19.99 35.39 20.87 35.14 21.9C33.87 21.32 32.48 21 31 21C25.48 21 21 25.48 21 31C21 36.52 25.48 41 31 41C35.79 41 39.79 37.63 40.77 33.13L42.07 31.91C42.58 32.35 43.19 32.68 43.87 32.85C42.97 39.16 37.55 44 31 44C23.82 44 18 38.18 18 31C18 23.82 23.82 18 31 18Z" fill="#616876"/>
+                            </svg>
+                        </div>
+                        <span class="mob-node-label">AI &amp; Search</span>
+                    </div>
+                </div>
+
+                <!-- ── Fan-in connector: 3 nodes → Initial Build pill ── -->
+                <svg class="mob-connector" viewBox="0 0 343 110" fill="none">
+                    <defs>
+                        <linearGradient id="mg-in" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#2F6FBF" stop-opacity="0.25"/>
+                            <stop offset="100%" stop-color="#2F6FBF" stop-opacity="0.9"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Left: x=57 → cx=171.5 -->
+                    <path d="M 57 6 C 57 60.5, 171.5 49.5, 171.5 104" stroke="#2F6FBF" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 57 6 C 57 60.5, 171.5 49.5, 171.5 104" stroke="url(#mg-in)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 57 6 C 57 60.5, 171.5 49.5, 171.5 104" stroke="#2F6FBF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0s"/>
+                    <!-- Center: x=171.5 straight -->
+                    <path d="M 171.5 6 C 171.5 60.5, 171.5 49.5, 171.5 104" stroke="#2F6FBF" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 171.5 6 C 171.5 60.5, 171.5 49.5, 171.5 104" stroke="url(#mg-in)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 171.5 6 C 171.5 60.5, 171.5 49.5, 171.5 104" stroke="#2F6FBF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0.22s"/>
+                    <!-- Right: x=286 → cx=171.5 -->
+                    <path d="M 286 6 C 286 60.5, 171.5 49.5, 171.5 104" stroke="#2F6FBF" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 286 6 C 286 60.5, 171.5 49.5, 171.5 104" stroke="url(#mg-in)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 286 6 C 286 60.5, 171.5 49.5, 171.5 104" stroke="#2F6FBF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0.44s"/>
+                    <!-- Travelling dots -->
+                    <circle r="2.2" fill="#2F6FBF"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0s" path="M 57 6 C 57 60.5, 171.5 49.5, 171.5 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0s"/></circle>
+                    <circle r="2.2" fill="#2F6FBF"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.35s" path="M 171.5 6 L 171.5 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0.35s"/></circle>
+                    <circle r="2.2" fill="#2F6FBF"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.7s" path="M 286 6 C 286 60.5, 171.5 49.5, 171.5 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0.7s"/></circle>
+                </svg>
+
+                <!-- Initial Build pill -->
+                <div class="mob-pill mob-pill-navy">Initial Build</div>
+
+                <!-- Hub -->
+                <div class="mob-hub">
+                    <svg width="104" height="104" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#mhub-filter0)">
+                            <circle cx="109.754" cy="109.754" r="109.754" transform="rotate(180 109.754 109.754)" fill="white" fill-opacity="0.01"/>
+                        </g>
+                        <path d="M81.3476 3.73986C96.4382 -0.30367 112.218 -1.07889 127.633 1.46603C143.047 4.01093 157.74 9.81733 170.73 18.497C183.72 27.1767 194.708 38.5295 202.958 51.7966C211.208 65.0637 216.53 79.9392 218.569 95.4285C220.609 110.918 219.317 126.664 214.782 141.614C210.247 156.565 202.573 170.374 192.272 182.12C181.971 193.866 169.281 203.278 155.05 209.725C140.82 216.173 125.377 219.509 109.754 219.509L109.754 109.754L81.3476 3.73986Z" fill="url(#mhub-paint0)"/>
+                        <path d="M32.1461 32.1463C47.729 16.5634 67.6421 6.03244 89.2933 1.92411C110.945 -2.18419 133.331 0.320442 153.539 9.11205C173.747 17.9036 190.84 32.575 202.594 51.2164C214.348 69.8578 220.218 91.6058 219.44 113.63L109.754 109.754L32.1461 32.1463Z" fill="url(#mhub-paint1)"/>
+                        <circle cx="109.754" cy="109.754" r="109.254" transform="rotate(180 109.754 109.754)" stroke="#E9EEF4"/>
+                        <ellipse cx="109.758" cy="109.063" rx="76.5" ry="76" fill="white" fill-opacity="0.2"/>
+                        <path d="M109.758 33.5632C151.735 33.5632 185.758 67.3688 185.758 109.063C185.758 150.758 151.735 184.563 109.758 184.563C67.7816 184.563 33.7583 150.758 33.7583 109.063C33.7583 67.3688 67.7816 33.5632 109.758 33.5632Z" stroke="white" stroke-opacity="0.49"/>
+                        <circle cx="110.258" cy="110.063" r="47" fill="url(#mhub-paint2)"/>
+                        <g filter="url(#mhub-filter3)">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M113.292 82.0632C113.917 82.0632 114.494 82.3021 114.933 82.7003C115.371 83.0986 115.672 83.6564 115.746 84.2937L116.137 87.7103C117.079 87.9684 118.002 88.2892 118.896 88.6711C119.793 89.0532 120.663 89.496 121.502 89.999L124.091 87.9073C124.585 87.509 125.185 87.3288 125.771 87.3627C126.357 87.3967 126.932 87.644 127.376 88.0967L131.491 92.2892C131.93 92.7419 132.171 93.3271 132.206 93.9244C132.241 94.5216 132.068 95.1312 131.677 95.6342L129.565 98.351C130.015 99.1683 130.416 100.013 130.763 100.88C131.109 101.747 131.403 102.639 131.638 103.551L135.068 103.956C135.694 104.032 136.242 104.337 136.633 104.784C137.024 105.231 137.258 105.818 137.258 106.455V112.401C137.258 113.038 137.024 113.625 136.633 114.072C136.242 114.519 135.694 114.825 135.068 114.9L131.591 115.307C131.348 116.227 131.043 117.129 130.681 118.006C130.321 118.884 129.901 119.737 129.432 120.564L131.688 123.482C132.078 123.985 132.255 124.594 132.222 125.192C132.189 125.789 131.947 126.374 131.503 126.827L127.379 131.028C126.935 131.475 126.36 131.722 125.774 131.758C125.186 131.793 124.587 131.616 124.094 131.218L121.192 128.878C120.367 129.352 119.514 129.769 118.639 130.13C117.763 130.491 116.861 130.795 115.943 131.039L115.513 134.833C115.439 135.47 115.138 136.028 114.7 136.426C114.261 136.824 113.685 137.063 113.059 137.063H107.225C106.599 137.063 106.023 136.824 105.584 136.426C105.145 136.028 104.845 135.47 104.771 134.833L104.77 134.837L104.321 130.904C103.466 130.655 102.627 130.354 101.811 130.002C100.992 129.649 100.196 129.246 99.4243 128.793L96.4243 131.213C95.9306 131.611 95.3305 131.792 94.7441 131.758C94.1579 131.724 93.5831 131.476 93.1387 131.024L89.0151 126.822C88.5767 126.37 88.3351 125.784 88.3003 125.187C88.2655 124.588 88.4396 123.979 88.8306 123.476L91.2241 120.399C90.8042 119.643 90.4278 118.859 90.0962 118.058C89.7662 117.258 89.4795 116.436 89.2407 115.6L85.4482 115.152C84.8227 115.077 84.2747 114.771 83.8838 114.324C83.4929 113.877 83.2584 113.29 83.2583 112.653V106.708C83.2584 106.071 83.493 105.483 83.8838 105.037C84.2747 104.59 84.8228 104.284 85.4482 104.209L89.0444 103.791C89.2703 102.875 89.5523 101.975 89.8926 101.099C90.2314 100.223 90.6288 99.3695 91.0776 98.5435L88.8306 95.6461C88.4396 95.1431 88.2626 94.5322 88.2959 93.9348C88.3292 93.3376 88.5709 92.7524 89.0151 92.2996L93.1387 88.0982C93.5831 87.6514 94.1564 87.4041 94.7441 87.3686C95.332 87.3332 95.9306 87.5105 96.4243 87.9087L99.1108 90.0811C99.9709 89.5574 100.862 89.0963 101.781 88.701C102.701 88.3042 103.647 87.9744 104.614 87.7103L105.004 84.2937C105.078 83.6564 105.378 83.0986 105.817 82.7003C106.256 82.3021 106.832 82.0632 107.458 82.0632H113.292ZM110.258 97.341C103.631 97.341 98.2583 102.813 98.2583 109.563C98.2583 116.313 103.631 121.785 110.258 121.785C116.886 121.785 122.258 116.313 122.258 109.563C122.258 102.813 116.886 97.341 110.258 97.341Z" fill="#EAEAEA"/>
+                        </g>
+                        <defs>
+                            <filter id="mhub-filter0" x="-6.9" y="-6.89994" width="233.308" height="233.308" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feTurbulence type="fractalNoise" baseFrequency="0.043290041387081146 0.043290041387081146" numOctaves="3" seed="2678" result="displacementX"/>
+                                <feTurbulence type="fractalNoise" baseFrequency="0.043290041387081146 0.043290041387081146" numOctaves="3" seed="2679" result="displacementY"/>
+                                <feColorMatrix in="displacementX" type="matrix" values="0 0 0 1 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0 1" result="displacementXRed"/>
+                                <feColorMatrix in="displacementY" type="matrix" values="0 0 0 0 0  0 0 0 1 0  0 0 0 0 0  0 0 0 0 1"/>
+                                <feComposite in="displacementXRed" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+                                <feDisplacementMap in="shape" scale="13.800000190734863" xChannelSelector="R" yChannelSelector="G" width="100%" height="100%"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+                                <feComponentTransfer result="sourceDisplacedAlpha"><feFuncA type="gamma" exponent="0.2"/></feComponentTransfer>
+                                <feColorMatrix in="shape" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+                                <feComponentTransfer result="inputSourceAlpha"><feFuncA type="gamma" exponent="0.2"/></feComponentTransfer>
+                                <feComposite in="sourceDisplacedAlpha" operator="arithmetic" k1="1" k2="0" k3="0" k4="0" result="displacementAlphasMultiplied"/>
+                                <feComposite in="displacementAlphasMultiplied" operator="arithmetic" k1="0" k2="0" k3="-0.5" k4="0.5" result="centeringAdjustment"/>
+                                <feComposite in="displacementX" in2="displacementAlphasMultiplied" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+                                <feComposite in="centeringAdjustment" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+                                <feColorMatrix type="matrix" values="0 0 0 1 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0 1" result="displacementXFinal"/>
+                                <feComposite in="displacementY" in2="displacementAlphasMultiplied" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+                                <feComposite in="centeringAdjustment" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 1 0  0 0 0 0 0  0 0 0 0 1" result="displacementYFinal"/>
+                                <feComposite in="displacementXFinal" in2="displacementYFinal" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+                                <feComposite in2="displacementAlphasMultiplied" operator="in" result="displacementMap"/>
+                                <feFlood flood-color="rgb(127, 127, 127)" flood-opacity="1"/>
+                                <feComposite in2="displacementAlphasMultiplied" operator="out"/>
+                                <feComposite in2="displacementMap" operator="over" result="displacementMapWithBg"/>
+                                <feDisplacementMap in="shape" scale="13.800000190734863" xChannelSelector="R" yChannelSelector="G" width="100%" height="100%" result="displacedImage"/>
+                                <feColorMatrix in="shape" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 127 0" result="imageOpaque"/>
+                                <feDisplacementMap in="imageOpaque" in2="displacementMapWithBg" scale="13.800000190734863" xChannelSelector="R" yChannelSelector="G" width="100%" height="100%" result="displacedImageOpaque"/>
+                                <feColorMatrix in="displacedImage" type="matrix" values="0 0 0 1 0  0 0 0 0 0  0 0 0 0 0  0 0 0 127 0" result="displacedImageRed"/>
+                                <feColorMatrix in="shape" type="matrix" values="0 0 0 1 0  0 0 0 0 0  0 0 0 0 0  0 0 0 127 0"/>
+                                <feComposite in="displacedImageRed" operator="atop" result="transparencyRedMap"/>
+                                <feColorMatrix in="transparencyRedMap" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="transparencyAlphaMap"/>
+                                <feComposite in="displacedImageOpaque" in2="imageOpaque" operator="over"/>
+                                <feComposite in2="transparencyAlphaMap" operator="in"/>
+                            </filter>
+                            <filter id="mhub-filter3" x="79.2583" y="78.0632" width="62" height="63" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset/>
+                                <feGaussianBlur stdDeviation="2"/>
+                                <feComposite in2="hardAlpha" operator="out"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                            </filter>
+                            <linearGradient id="mhub-paint0" x1="79.4885" y1="2.32814" x2="109.754" y2="219.509" gradientUnits="userSpaceOnUse">
+                                <animateTransform attributeName="gradientTransform" type="rotate" from="0 110 110" to="360 110 110" dur="10s" repeatCount="indefinite"/>
+                                <stop stop-color="#80C34A" stop-opacity="0"/>
+                                <stop offset="1" stop-color="#80C34A"/>
+                            </linearGradient>
+                            <linearGradient id="mhub-paint1" x1="59.2006" y1="52.8816" x2="178.267" y2="144.011" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="white" stop-opacity="0.01"/>
+                                <stop offset="1" stop-color="#1266B5" stop-opacity="0"/>
+                            </linearGradient>
+                            <radialGradient id="mhub-paint2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(110.258 110.063) rotate(90) scale(47)">
+                                <stop stop-color="#184B7F"/>
+                                <stop offset="1" stop-color="#0D1F40"/>
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <!-- Ongoing pill -->
+                <div class="mob-pill mob-pill-green">Ongoing</div>
+
+                <!-- ── Fan-out connector: Ongoing pill → 3 output nodes ── -->
+                <svg class="mob-connector" viewBox="0 0 343 110" fill="none">
+                    <defs>
+                        <linearGradient id="mg-out" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" stop-color="#5A9E2F" stop-opacity="0.25"/>
+                            <stop offset="100%" stop-color="#5A9E2F" stop-opacity="0.9"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Left -->
+                    <path d="M 57 104 C 57 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 57 104 C 57 49.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 57 104 C 57 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0s"/>
+                    <!-- Center -->
+                    <path d="M 171.5 104 C 171.5 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 171.5 104 C 171.5 49.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 171.5 104 C 171.5 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0.22s"/>
+                    <!-- Right -->
+                    <path d="M 286 104 C 286 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 286 104 C 286 49.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 286 104 C 286 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0.44s"/>
+                    <!-- Travelling dots -->
+                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0s" path="M 171.5 6 C 171.5 60.5, 57 49.5, 57 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0s"/></circle>
+                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.35s" path="M 171.5 6 L 171.5 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0.35s"/></circle>
+                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.7s" path="M 171.5 6 C 171.5 60.5, 286 49.5, 286 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0.7s"/></circle>
+                </svg>
+
+                <!-- ── Bottom nodes: Ongoing outputs ── -->
+                <div class="mob-nodes-row mob-nodes-bottom">
+                    <!-- Maintenance -->
+                    <div class="mob-node" id="mn-r1">
+                        <div class="mob-node-icon">
+                            <svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="32" fill="#B3D4A0"/>
+                                <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
+                                <g transform="translate(16, 19.5)">
+                                    <path d="M11.37 12.01C11.92 11.39 12.86 11.33 13.49 11.87C14.11 12.42 14.17 13.36 13.63 13.99L11.05 16.93L13.56 19.44C14.15 20.03 14.15 20.97 13.56 21.56C12.97 22.15 12.03 22.15 11.44 21.56L6.95 17.07L11.37 12.01Z" fill="#6A7661"/>
+                                    <path d="M18.94 11.94C19.53 11.35 20.47 11.35 21.06 11.94L25.55 16.43L21.13 21.49C20.58 22.11 19.64 22.17 19.01 21.63C18.39 21.08 18.33 20.14 18.87 19.51L21.45 16.57L18.94 14.06C18.35 13.47 18.35 12.53 18.94 11.94Z" fill="#6A7661"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M28 0C30.21 0 32 1.79 32 4V23C32 25.21 30.21 27 28 27H4C1.86 27 0.11 25.32 0 23.21L0 23V4C0 1.79 1.79 0 4 0H28ZM3 23C3 23.55 3.45 24 4 24H28C28.55 24 29 23.55 29 23V8.5H3V23ZM4 3C3.45 3 3 3.45 3 4V5.5H29V4C29 3.45 28.55 3 28 3H4Z" fill="#6A7661"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="mob-node-label">Maintenance</span>
+                    </div>
+                    <!-- Maps -->
+                    <div class="mob-node" id="mn-r2">
+                        <div class="mob-node-icon">
+                            <svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="32" fill="#B3D4A0"/>
+                                <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M42 19C44.21 19 46 20.79 46 23V43C46 45.14 44.32 46.89 42.21 46.995L42 47L21.79 46.995C19.75 46.89 18.11 45.25 18 43.21L18 34.73L18.96 36.04C19.51 36.8 20.22 37.35 21 37.68V40.17L23.07 38.1C24.57 38.07 26.06 37.39 27.04 36.04L32.02 29.2C32.05 29.15 32.09 29.1 32.13 29.04L39.17 22H33.95C33.84 20.95 33.59 19.95 33.22 19H42ZM22.83 44H28.67L34.92 37.75L32 34.83L22.83 44ZM34.33 44H41.17L37.75 40.58L34.33 44ZM34.83 32L43 40.17V23.83L34.83 32Z" fill="#6A7661"/>
+                                <path d="M23 21C24.1 21 25 21.9 25 23C25 24.1 24.1 25 23 25C21.9 25 21 24.1 21 23C21 21.9 21.9 21 23 21Z" fill="#6A7661"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M23 15C27.42 15 31 18.66 31 23.08L30.99 23.37C30.94 24.83 30.45 26.26 29.59 27.44L24.62 34.28L24.54 34.38C23.74 35.34 22.26 35.34 21.46 34.38L21.38 34.28L16.41 27.44C15.49 26.18 15 24.64 15 23.08C15 18.66 18.58 15 23 15ZM23 18C20.28 18 18 20.28 18 23.08C18 24.01 18.3 24.93 18.84 25.67L23 31.4L27.17 25.67C27.7 24.93 28 24.01 28 23.08C28 20.28 25.72 18 23 18Z" fill="#6A7661"/>
+                            </svg>
+                        </div>
+                        <span class="mob-node-label">Maps</span>
+                    </div>
+                    <!-- Optimization -->
+                    <div class="mob-node" id="mn-r3">
+                        <div class="mob-node-icon">
+                            <svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="32" fill="#B3D4A0"/>
+                                <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M41.5 16C42.33 16 43 16.67 43 17.5V19L43.26 19.01C45.9 19.14 48 21.32 48 24V43C48 45.76 45.76 48 43 48H21C18.32 48 16.14 45.9 16.01 43.26L16 43V24C16 21.32 18.1 19.14 20.74 19.01L21 19V17.5C21 16.67 21.67 16 22.5 16C23.33 16 24 16.67 24 17.5V19H31V17.5C31 16.67 31.67 16 32.5 16C33.33 16 34 16.67 34 17.5V19H40V17.5C40 16.67 40.67 16 41.5 16ZM19 43C19 44.1 19.9 45 21 45H43C44.1 45 45 44.1 45 43V29.5H19V43ZM24 22.5C24 23.33 23.33 24 22.5 24C21.67 24 21 23.33 21 22.5V22C19.9 22 19 22.9 19 24V26.5H45V24C45 22.9 44.1 22 43 22V22.5C43 23.33 42.33 24 41.5 24C40.67 24 40 23.33 40 22.5V22H34V22.5C34 23.33 33.33 24 32.5 24C31.67 24 31 23.33 31 22.5V22H24V22.5Z" fill="#6A7661"/>
+                                <path d="M32.5 32C33.33 32 34 32.67 34 33.5V41.5C34 42.33 33.33 43 32.5 43C31.67 43 31 42.33 31 41.5V36.28L30.35 37.07C30.13 37.34 29.8 37.5 29.45 37.5C28.47 37.5 27.93 36.36 28.55 35.6L31.15 32.43C31.37 32.16 31.7 32 32.05 32C32.2 32 32.35 32 32.5 32Z" fill="#6A7661"/>
+                            </svg>
+                        </div>
+                        <span class="mob-node-label">Optimization</span>
+                    </div>
+                </div>
+
+                <!-- ── Cards (shown on tap) ── -->
+                <div class="mob-card" id="mob-card-l1">
+                    <button class="mob-card-close" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+                    <div class="mob-card-icon"><svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="32" fill="#0898D7"/><circle cx="32" cy="32" r="26" fill="#FFFFFD"/><path d="M48.6055 35.0322L40.0137 38.9365L35.6855 48.3135L29 29L48.6055 35.0322ZM36.083 40.292L37.5225 37.1738L37.7568 36.668L40.1641 35.5732L33.7686 33.6055L36.083 40.292Z" fill="#616876"/><path d="M32 16C41.6 16.78 48 23.65 48 32C48 32.07 47.998 32.14 47.997 32.21L44.98 31.29C44.9 29.77 44.56 28.33 44.003 27H40.32C40.58 27.96 40.78 28.97 40.89 30.03L37.72 29.05C37.58 28.34 37.41 27.66 37.19 27H31.05L24.85 25.09L26.61 30.18C26.54 30.78 26.5 31.38 26.5 32C26.5 34.05 26.85 35.88 27.4 37.5H29.14L30.18 40.5H28.74C29.61 42.07 30.62 43.34 31.5 44.32L32.77 47.98C32.51 47.99 32.26 48 32 48C22.78 47.61 16 40.6 16 32C16 23.4 22.78 16.39 31.28 16.02C31.73 16 32 16 32 16ZM22.17 40.5C23.61 42.16 25.46 43.46 27.57 44.22C26.8 43.16 26.03 41.92 25.37 40.5H22.17ZM20 27C19.36 28.54 19 30.23 19 32C19 33.97 19.44 35.83 20.22 37.5H24.26C23.79 35.85 23.5 34.01 23.5 32C23.5 30.22 23.76 28.55 24.18 27H20ZM27.67 19.74C25.31 20.57 23.27 22.07 21.76 24H25.25C25.96 22.38 26.82 20.94 27.67 19.74ZM32.14 19C31.08 20.12 29.7 21.84 28.57 24H35.93C34.8 21.84 33.42 20.13 32.37 19.01C32.29 19 32.21 19 32.14 19ZM37.01 20C37.8 21.15 38.59 22.49 39.25 24H42.24C40.88 22.26 39.08 20.87 37.01 20Z" fill="#616876"/></svg></div>
+                    <h3 class="mob-card-title">Website</h3>
+                    <p class="mob-card-text">Custom-built, mobile-first, and conversion-focused—designed around how your customers actually find and choose you.</p>
+                </div>
+                <div class="mob-card" id="mob-card-l3">
+                    <button class="mob-card-close" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+                    <div class="mob-card-icon"><svg viewBox="0 0 64 66" fill="none"><circle cx="32" cy="32" r="32" fill="#0897D6"/><circle cx="32" cy="32" r="26" fill="#FFFFFD"/><path d="M42.5 18C45.54 18 48 20.46 48 23.5V34.5C48 35.33 47.33 36 46.5 36C45.67 36 45 35.33 45 34.5V27.5H19V40C19 41.38 20.12 42.5 21.5 42.5H31.5C32.33 42.5 33 43.17 33 44C33 44.83 32.33 45.5 31.5 45.5H21.5C18.46 45.5 16 43.04 16 40V23.5C16 20.46 18.46 18 21.5 18H42.5ZM21.5 21C20.12 21 19 22.12 19 23.5V24.5H45V23.5C45 22.12 43.88 21 42.5 21H21.5Z" fill="#616876"/><path d="M31.63 30L31.78 30.02L35.03 30.38L35.56 30.44L45.43 40.31C47.12 42 47.12 44.74 45.43 46.43C43.74 48.12 41 48.12 39.31 46.43L29.44 36.56L29.38 36.03L29.02 32.78C28.84 31.23 30.1 29.92 31.63 30ZM32.3 35.18L41.43 44.31C41.95 44.83 42.79 44.83 43.31 44.31C43.83 43.79 43.83 42.95 43.31 42.43L34.18 33.3L32.07 33.07L32.3 35.18Z" fill="#616876"/></svg></div>
+                    <h3 class="mob-card-title">Content</h3>
+                    <p class="mob-card-text">Content written for how people search—and how AI and search engines interpret it. Built to be found, understood, and cited.</p>
+                </div>
+                <div class="mob-card" id="mob-card-l2">
+                    <button class="mob-card-close" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+                    <div class="mob-card-icon"><svg viewBox="0 0 64 66" fill="none"><circle cx="32" cy="32" r="32" fill="#0897D6"/><circle cx="32" cy="32" r="26" fill="#FFFFFD"/><path d="M45.56 44.44C46.15 45.03 46.15 45.97 45.56 46.56C44.97 47.15 44.03 47.15 43.44 46.56L37.44 40.56L39.56 38.44L45.56 44.44Z" fill="#616876"/><path d="M45 20C46.66 20 48 21.34 48 23V28.5C48 30.16 46.66 31.5 45 31.5C43.77 31.5 42.71 30.76 42.25 29.69L39.05 32.69C38.29 33.4 37.21 33.67 36.21 33.39L32.49 32.38L29.23 36.01C28.12 37.24 26.22 37.34 24.99 36.23C23.76 35.12 23.66 33.22 24.77 31.99L29.27 26.99C30.03 26.15 31.2 25.81 32.29 26.11L36.17 27.16L37.9 25.54C37.06 25.01 36.5 24.07 36.5 23C36.5 21.34 37.84 20 39.5 20H45Z" fill="#616876" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 18C33.1 18 35.08 18.5 36.83 19.38C36 19.99 35.39 20.87 35.14 21.9C33.87 21.32 32.48 21 31 21C25.48 21 21 25.48 21 31C21 36.52 25.48 41 31 41C35.79 41 39.79 37.63 40.77 33.13L42.07 31.91C42.58 32.35 43.19 32.68 43.87 32.85C42.97 39.16 37.55 44 31 44C23.82 44 18 38.18 18 31C18 23.82 23.82 18 31 18Z" fill="#616876"/></svg></div>
+                    <h3 class="mob-card-title">AI &amp; Search</h3>
+                    <p class="mob-card-text">Metadata, structured data, and AI-ready structure built into the foundation—so your pages are properly understood across search and AI platforms.</p>
+                </div>
+                <div class="mob-card" id="mob-card-r1">
+                    <button class="mob-card-close" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+                    <div class="mob-card-icon"><svg viewBox="0 0 64 66" fill="none"><circle cx="32" cy="32" r="32" fill="#B3D4A0"/><circle cx="32" cy="32" r="26" fill="#FFFFFD"/><g transform="translate(16,19.5)"><path d="M11.37 12.01C11.92 11.39 12.86 11.33 13.49 11.87C14.11 12.42 14.17 13.36 13.63 13.99L11.05 16.93L13.56 19.44C14.15 20.03 14.15 20.97 13.56 21.56C12.97 22.15 12.03 22.15 11.44 21.56L6.95 17.07L11.37 12.01Z" fill="#6A7661"/><path d="M18.94 11.94C19.53 11.35 20.47 11.35 21.06 11.94L25.55 16.43L21.13 21.49C20.58 22.11 19.64 22.17 19.01 21.63C18.39 21.08 18.33 20.14 18.87 19.51L21.45 16.57L18.94 14.06C18.35 13.47 18.35 12.53 18.94 11.94Z" fill="#6A7661"/><path fill-rule="evenodd" clip-rule="evenodd" d="M28 0C30.21 0 32 1.79 32 4V23C32 25.21 30.21 27 28 27H4C1.86 27 0.11 25.32 0 23.21L0 23V4C0 1.79 1.79 0 4 0H28ZM3 23C3 23.55 3.45 24 4 24H28C28.55 24 29 23.55 29 23V8.5H3V23ZM4 3C3.45 3 3 3.45 3 4V5.5H29V4C29 3.45 28.55 3 28 3H4Z" fill="#6A7661"/></g></svg></div>
+                    <h3 class="mob-card-title">Maintenance</h3>
+                    <p class="mob-card-text">Secure hosting, platform updates, performance tuning, and technical management—handled monthly with nothing required on your end.</p>
+                </div>
+                <div class="mob-card" id="mob-card-r2">
+                    <button class="mob-card-close" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+                    <div class="mob-card-icon"><svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="32" fill="#B3D4A0"/><circle cx="32" cy="32" r="26" fill="#FFFFFD"/><path fill-rule="evenodd" clip-rule="evenodd" d="M42 19C44.21 19 46 20.79 46 23V43C46 45.14 44.32 46.89 42.21 46.995L42 47L21.79 46.995C19.75 46.89 18.11 45.25 18 43.21L18 34.73L18.96 36.04C19.51 36.8 20.22 37.35 21 37.68V40.17L23.07 38.1C24.57 38.07 26.06 37.39 27.04 36.04L32.02 29.2C32.05 29.15 32.09 29.1 32.13 29.04L39.17 22H33.95C33.84 20.95 33.59 19.95 33.22 19H42ZM22.83 44H28.67L34.92 37.75L32 34.83L22.83 44ZM34.33 44H41.17L37.75 40.58L34.33 44ZM34.83 32L43 40.17V23.83L34.83 32Z" fill="#6A7661"/><path d="M23 21C24.1 21 25 21.9 25 23C25 24.1 24.1 25 23 25C21.9 25 21 24.1 21 23C21 21.9 21.9 21 23 21Z" fill="#6A7661"/><path fill-rule="evenodd" clip-rule="evenodd" d="M23 15C27.42 15 31 18.66 31 23.08L30.99 23.37C30.94 24.83 30.45 26.26 29.59 27.44L24.62 34.28L24.54 34.38C23.74 35.34 22.26 35.34 21.46 34.38L21.38 34.28L16.41 27.44C15.49 26.18 15 24.64 15 23.08C15 18.66 18.58 15 23 15ZM23 18C20.28 18 18 20.28 18 23.08C18 24.01 18.3 24.93 18.84 25.67L23 31.4L27.17 25.67C27.7 24.93 28 24.01 28 23.08C28 20.28 25.72 18 23 18Z" fill="#6A7661"/></svg></div>
+                    <h3 class="mob-card-title">Maps</h3>
+                    <p class="mob-card-text">Google Business Profile and Maps optimization to improve visibility in the local 3-Pack—plus Apple Maps and Bing Places.</p>
+                </div>
+                <div class="mob-card" id="mob-card-r3">
+                    <button class="mob-card-close" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+                    <div class="mob-card-icon"><svg viewBox="0 0 64 66" fill="none"><circle cx="32" cy="32" r="32" fill="#B3D4A0"/><circle cx="32" cy="32" r="26" fill="#FFFFFD"/><path fill-rule="evenodd" clip-rule="evenodd" d="M41.5 16C42.33 16 43 16.67 43 17.5V19L43.26 19.01C45.9 19.14 48 21.32 48 24V43C48 45.76 45.76 48 43 48H21C18.32 48 16.14 45.9 16.01 43.26L16 43V24C16 21.32 18.1 19.14 20.74 19.01L21 19V17.5C21 16.67 21.67 16 22.5 16C23.33 16 24 16.67 24 17.5V19H31V17.5C31 16.67 31.67 16 32.5 16C33.33 16 34 16.67 34 17.5V19H40V17.5C40 16.67 40.67 16 41.5 16ZM19 43C19 44.1 19.9 45 21 45H43C44.1 45 45 44.1 45 43V29.5H19V43ZM24 22.5C24 23.33 23.33 24 22.5 24C21.67 24 21 23.33 21 22.5V22C19.9 22 19 22.9 19 24V26.5H45V24C45 22.9 44.1 22 43 22V22.5C43 23.33 42.33 24 41.5 24C40.67 24 40 23.33 40 22.5V22H34V22.5C34 23.33 33.33 24 32.5 24C31.67 24 31 23.33 31 22.5V22H24V22.5Z" fill="#6A7661"/><path d="M32.5 32C33.33 32 34 32.67 34 33.5V41.5C34 42.33 33.33 43 32.5 43C31.67 43 31 42.33 31 41.5V36.28L30.35 37.07C30.13 37.34 29.8 37.5 29.45 37.5C28.47 37.5 27.93 36.36 28.55 35.6L31.15 32.43C31.37 32.16 31.7 32 32.05 32C32.2 32 32.35 32 32.5 32Z" fill="#6A7661"/></svg></div>
+                    <h3 class="mob-card-title">Optimization</h3>
+                    <p class="mob-card-text">Each month, we improve one priority page—new or existing. Includes content updates, SEO improvements, AI structure tuning, and UX adjustments to increase conversions.</p>
+                </div>
+
+                <!-- ── Stack row ── -->
+                <div class="mob-stack">
+                    <div class="mob-stack-label">Stack</div>
+                    <div class="mob-stack-icons-wrap">
+                        <div class="mob-stack-hline"></div>
+                        <div class="mob-stack-row">
+                            <!-- Google -->
+                            <div class="mob-stack-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#6B7A8F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12h-8v2.6h4.6A4.6 4.6 0 1 1 12 7.4a4.4 4.4 0 0 1 3 1.1l1.9-1.9A7 7 0 1 0 20 12.5z"/></svg></div>
+                            <!-- Google Ads -->
+                            <div class="mob-stack-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#6B7A8F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l8 14H4L12 4z"/><path d="M12 10v4M12 16.5v.01"/></svg></div>
+                            <!-- Zapier -->
+                            <div class="mob-stack-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#6B7A8F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 14h6l-1 7 8-11h-6l1-7z"/></svg></div>
+                            <!-- Layers -->
+                            <div class="mob-stack-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#6B7A8F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l9 4.5-9 4.5L3 8l9-4.5z"/><path d="M3 12l9 4.5L21 12M3 16l9 4.5L21 16"/></svg></div>
+                            <!-- Figma -->
+                            <div class="mob-stack-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#6B7A8F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3" width="8" height="6" rx="3"/><rect x="8" y="9" width="8" height="6" rx="3"/><rect x="8" y="15" width="8" height="6" rx="3"/><circle cx="16" cy="12" r="3"/></svg></div>
+                            <!-- Maps pin -->
+                            <div class="mob-stack-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#6B7A8F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+                            <!-- Apple -->
+                            <div class="mob-stack-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#6B7A8F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3a3 3 0 0 1-2.5 2.5M17 13a4 4 0 0 1 2-3.3c-1-1.4-2.6-2.2-4-2.2-1.7 0-2.3 1-3.6 1s-2-1-3.5-1C5 7.5 3 10 3 13.5c0 3.7 3 7.5 4.8 7.5 1.1 0 1.5-.8 3.2-.8s2 .8 3.2.8c1.7 0 3.3-2.5 3.8-4a4.2 4.2 0 0 1-1-4z"/></svg></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- end mob-mindmap -->
+        </div><!-- end mob-inner -->
+    </div><!-- end mob-hero -->
+
 </section>
 <script>
     const hero = document.querySelector('.hero');
@@ -1325,6 +1793,64 @@
 
         clearGroupActive(activeGroup);
     });
+</script>
+
+<script>
+    // Mobile node tap → show card centered overlay
+    (function () {
+        var MAP = {
+            'mn-l1': 'mob-card-l1',
+            'mn-l3': 'mob-card-l3',
+            'mn-l2': 'mob-card-l2',
+            'mn-r1': 'mob-card-r1',
+            'mn-r2': 'mob-card-r2',
+            'mn-r3': 'mob-card-r3',
+        };
+        var activeNode = null;
+        var backdrop = document.getElementById('mob-backdrop');
+
+        function closeActive() {
+            if (!activeNode) return;
+            var prev = document.getElementById(MAP[activeNode]);
+            if (prev) prev.classList.remove('active');
+            var prevNode = document.getElementById(activeNode);
+            if (prevNode) prevNode.classList.remove('active');
+            if (backdrop) backdrop.classList.remove('active');
+            activeNode = null;
+        }
+
+        Object.keys(MAP).forEach(function (nodeId) {
+            var node = document.getElementById(nodeId);
+            var card = document.getElementById(MAP[nodeId]);
+            if (!node || !card) return;
+
+            node.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var isSame = activeNode === nodeId;
+                closeActive();
+                if (!isSame) {
+                    card.classList.add('active');
+                    node.classList.add('active');
+                    if (backdrop) backdrop.classList.add('active');
+                    activeNode = nodeId;
+                }
+            });
+
+            var closeBtn = card.querySelector('.mob-card-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    closeActive();
+                });
+            }
+        });
+
+        // Tap backdrop or outside closes card
+        if (backdrop) {
+            backdrop.addEventListener('click', function () { closeActive(); });
+        }
+        document.addEventListener('click', function () { closeActive(); });
+    }());
 </script>
 </body>
 </html>
