@@ -29,7 +29,7 @@
         .hero {
             background-color: var(--bg-color);
             width: 100%;
-            height: 890px;
+            height: 920px;
             padding-top: 80px;
             display: flex;
             justify-content: center;
@@ -119,8 +119,6 @@
             top: 431px;
 
             background: #18497D;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid #E9EEF4;
             border-radius: 17px; /* Pill shape */
 
@@ -148,8 +146,6 @@
             top: 431px;
 
             background: #4A8628;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid #E9EEF4;
             border-radius: 17px;
 
@@ -228,7 +224,7 @@
         /* Hover Cards */
         .hero-card {
             position: absolute;
-            width: 320px;
+            width: 480px;
             background: #FFFFFF;
             border-radius: 24px;
             padding: 32px;
@@ -254,18 +250,6 @@
             transform: translate(-50%, -64px) scale(1);
         }
 
-        /* Hide icon and label when card is active */
-        .hero.is-hovering .hero-tag-icon.hover-active {
-            opacity: 0 !important;
-            /* Keep geometry stable to avoid Chrome hover thrash */
-            transform: translate(-50%, -50%) scale(1) !important;
-        }
-
-        .hero.is-hovering .hero-tag-icon-label.hover-active {
-            opacity: 0 !important;
-            /* Keep geometry stable to avoid Chrome hover thrash */
-            transform: translate(-50%, 0) scale(1) !important;
-        }
 
         .card-icon {
             width: 64px;
@@ -299,13 +283,8 @@
         }
 
         /* Card positions */
-        .card-l1 { left: calc(50% - 462.5px); top: 244.75px; }
-        .card-l2 { left: calc(50% - 462.5px); top: 651.25px; }
-        .card-l3 { left: calc(50% - 440px); top: 448px; }
-
-        .card-r1 { left: calc(50% + 462.5px); top: 244.75px; }
-        .card-r2 { left: calc(50% + 492px); top: 372.5px; }
-        .card-r3 { left: calc(50% + 462.5px); top: 651.25px; }
+        .card-l1, .card-l2, .card-l3,
+        .card-r1, .card-r2, .card-r3, .card-r4 { left: 50%; top: 630px; }
 
 
         /* Stack Section Styles */
@@ -363,7 +342,8 @@
         .hero.hover-l3 .hero-tag-svg-3, .hero.hover-l3 .hero-tag-icon-3, .hero.hover-l3 .hero-tag-icon-label-3,
         .hero.hover-r1 .hero-tag-right-svg-1, .hero.hover-r1 .hero-tag-right-icon-1, .hero.hover-r1 .hero-tag-right-icon-label-1,
         .hero.hover-r2 .hero-tag-right-svg-2, .hero.hover-r2 .hero-tag-right-icon-2, .hero.hover-r2 .hero-tag-right-icon-label-2,
-        .hero.hover-r3 .hero-tag-right-svg-3, .hero.hover-r3 .hero-tag-right-icon-3, .hero.hover-r3 .hero-tag-right-icon-label-3 {
+        .hero.hover-r3 .hero-tag-right-svg-3, .hero.hover-r3 .hero-tag-right-icon-3, .hero.hover-r3 .hero-tag-right-icon-label-3,
+        .hero.hover-r4 .hero-tag-right-svg-4, .hero.hover-r4 .hero-tag-right-icon-4, .hero.hover-r4 .hero-tag-right-icon-label-4 {
             filter: none !important;
             opacity: 1 !important;
         }
@@ -376,7 +356,7 @@
         }
         /* Fallback for browsers that don't support :has() well, though it's 2024+ */
         .hero.hover-l1 .hero-tag, .hero.hover-l2 .hero-tag, .hero.hover-l3 .hero-tag,
-        .hero.hover-r1 .hero-tag-right, .hero.hover-r2 .hero-tag-right, .hero.hover-r3 .hero-tag-right {
+        .hero.hover-r1 .hero-tag-right, .hero.hover-r2 .hero-tag-right, .hero.hover-r3 .hero-tag-right, .hero.hover-r4 .hero-tag-right {
             filter: none;
             opacity: 1;
         }
@@ -406,8 +386,9 @@
         .dot-l2 { offset-path: path('M250.031 3.5H227.375C193.003 3.5 161.703 23.2928 146.968 54.3464L98.7782 155.904C84.0431 186.957 52.7434 206.75 18.3711 206.75H7.5'); }
         .dot-l3 { offset-path: path('M227.5 6.5H7.5'); }
         .dot-r1 { offset-path: path('M7.49998 206.75H30.1559C64.5281 206.75 95.8279 186.957 110.563 155.904L158.753 54.3464C173.488 23.2928 204.787 3.5 239.16 3.5H250.031'); }
-        .dot-r2 { offset-path: path('M7.5 6.5H227.5'); }
+        .dot-r2 { offset-path: path('M7.5 3.5H55.7428C75.6303 3.5 94.9447 10.1609 110.604 22.42L158.711 60.08C174.371 72.3391 193.685 79 213.573 79H279.5'); }
         .dot-r3 { offset-path: path('M7.49998 3.5H30.1559C64.5281 3.5 95.8279 23.2928 110.563 54.3464L158.753 155.904C173.488 186.957 204.787 206.75 239.16 206.75H250.031'); }
+        .dot-r4 { offset-path: path('M7.5 79H55.7428C75.6303 79 94.9447 72.3391 110.604 60.08L158.711 22.42C174.371 10.1609 193.685 3.5 213.573 3.5H279.5'); }
 
         @keyframes redrawLines {
             from { stroke-dashoffset: 1000; }
@@ -441,8 +422,9 @@
         .hero-tag-svg-3 { left: -227.5px; top: calc(50% - 6.5px); }
 
         .hero-tag-right-svg-1 { left: calc(100% - 7.5px); top: calc(50% - 206.75px); }
-        .hero-tag-right-svg-2 { left: calc(100% - 7.5px); top: calc(50% - 6.5px); }
+        .hero-tag-right-svg-2 { left: calc(100% - 7.5px); top: calc(50% - 3.5px); }
         .hero-tag-right-svg-3 { left: calc(100% - 7.5px); top: calc(50% - 3.5px); }
+        .hero-tag-right-svg-4 { left: calc(100% - 7.5px); top: calc(50% - 79px); }
 
         .hero-tag-svg path {
             stroke-dasharray: 1000;
@@ -454,16 +436,17 @@
         .hero-tag-svg-2 path { animation-delay: 0.4s; }
         .hero-tag-svg-3 path { animation-delay: 0.6s; animation-duration: 0.8s; }
 
-        .hero-tag-right-svg-1 path, .hero-tag-right-svg-3 path { animation-delay: 0.5s; animation-duration: 1.2s; }
-        .hero-tag-right-svg-2 path { animation-delay: 0.7s; animation-duration: 0.8s; }
+        .hero-tag-right-svg-1 path, .hero-tag-right-svg-3 path { animation-delay: 0.5s; animation-duration: 1.4s; }
+        .hero-tag-right-svg-2 path, .hero-tag-right-svg-4 path { animation-delay: 0.6s; animation-duration: 1.1s; }
 
         .hero-tag-icon-1 { left: -242.5px; top: calc(50% - 203.25px); animation: iconEntrance 0.5s ease-out 1.6s forwards; }
         .hero-tag-icon-2 { left: -242.5px; top: calc(50% + 203.25px); animation: iconEntrance 0.5s ease-out 1.6s forwards; }
         .hero-tag-icon-3 { left: -220px; top: 50%; animation: iconEntrance 0.5s ease-out 1.4s forwards; }
 
         .hero-tag-right-icon-1 { left: calc(100% + 242.5px); top: calc(50% - 203.25px); animation: iconEntrance 0.5s ease-out 1.7s forwards; }
-        .hero-tag-right-icon-2 { left: calc(100% + 220px); top: 50%; animation: iconEntrance 0.5s ease-out 1.5s forwards; }
+        .hero-tag-right-icon-2 { left: calc(100% + 272px); top: calc(50% + 75.5px); animation: iconEntrance 0.5s ease-out 1.6s forwards; }
         .hero-tag-right-icon-3 { left: calc(100% + 242.5px); top: calc(50% + 203.25px); animation: iconEntrance 0.5s ease-out 1.7s forwards; }
+        .hero-tag-right-icon-4 { left: calc(100% + 272px); top: calc(50% - 75.5px); animation: iconEntrance 0.5s ease-out 1.6s forwards; }
 
         .hero-tag-icon-label-1 {
             left: -242.5px;
@@ -490,15 +473,20 @@
         }
 
         .hero-tag-right-icon-label-2 {
-            left: calc(100% + 220px);
-            top: calc(50% + 37px);
-            animation: labelEntrance 0.5s ease-out 1.5s forwards;
+            left: calc(100% + 272px);
+            top: calc(50% + 112.5px);
+            animation: labelEntrance 0.5s ease-out 1.6s forwards;
         }
 
         .hero-tag-right-icon-label-3 {
             left: calc(100% + 242.5px);
             top: calc(50% + 203.25px + 37px);
             animation: labelEntrance 0.5s ease-out 1.7s forwards;
+        }
+        .hero-tag-right-icon-label-4 {
+            left: calc(100% + 272px);
+            top: calc(50% - 38.5px);
+            animation: labelEntrance 0.5s ease-out 1.6s forwards;
         }
 
         .hero-container {
@@ -601,7 +589,7 @@
             }
             .mob-nodes-top    { grid-template-columns: 1fr 1fr 1fr; margin-bottom: -6px; }
             .mob-nodes-top .mob-node { flex-direction: column-reverse; }
-            .mob-nodes-bottom { grid-template-columns: 1fr 1fr 1fr; margin-top: -6px; margin-bottom: 28px; }
+            .mob-nodes-bottom { grid-template-columns: 1fr 1fr 1fr 1fr; margin-top: -6px; margin-bottom: 28px; }
 
             .mob-node {
                 display: flex; flex-direction: column; align-items: center;
@@ -911,12 +899,12 @@
         </div>
 
         <!-- Group R2 -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="235" height="19" viewBox="0 0 235 19" fill="none" class="hero-tag-svg hero-tag-right-svg-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="287" height="95" viewBox="0 0 287 95" fill="none" class="hero-tag-svg hero-tag-right-svg-2">
             <g filter="url(#filter0_d_9320_2499)">
-                <path d="M7.5 6.5H227.5" stroke="url(#paint0_linear_9320_2499)" stroke-width="4" class="hover-group" data-group="r2"/>
+                <path d="M7.5 3.5H55.7428C75.6303 3.5 94.9447 10.1609 110.604 22.42L158.711 60.08C174.371 72.3391 193.685 79 213.573 79H279.5" stroke="url(#paint0_linear_9320_2499)" stroke-width="4" class="hover-group" data-group="r2"/>
             </g>
             <defs>
-                <filter id="filter0_d_9320_2499" x="0" y="0" width="235" height="19" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <filter id="filter0_d_9320_2499" x="0" y="0" width="287" height="94.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                     <feOffset dy="6"/>
@@ -926,7 +914,7 @@
                     <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_9320_2499"/>
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_9320_2499" result="shape"/>
                 </filter>
-                <linearGradient id="paint0_linear_9320_2499" x1="7.49993" y1="7.23495" x2="283.115" y2="7.23495" gradientUnits="userSpaceOnUse">
+                <linearGradient id="paint0_linear_9320_2499" x1="7.49993" y1="57.372" x2="311.342" y2="57.372" gradientUnits="userSpaceOnUse">
                     <stop stop-color="#4A8628"/>
                     <stop offset="1" stop-color="#EDFFE2"/>
                 </linearGradient>
@@ -1022,6 +1010,58 @@
             </svg>
         </div>
 
+        <!-- Group R4 -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="287" height="95" viewBox="0 0 287 95" fill="none" class="hero-tag-svg hero-tag-right-svg-4">
+            <g filter="url(#filter0_d_r4)">
+                <path d="M7.5 79H55.7428C75.6303 79 94.9447 72.3391 110.604 60.08L158.711 22.42C174.371 10.1609 193.685 3.5 213.573 3.5H279.5" stroke="url(#paint0_linear_r4)" stroke-width="4" class="hover-group" data-group="r4"/>
+            </g>
+            <defs>
+                <filter id="filter0_d_r4" x="0" y="0" width="287" height="94.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dy="6"/>
+                    <feGaussianBlur stdDeviation="3.75"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.827233 0 0 0 0 1 0 0 0 0 0.687988 0 0 0 1 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_r4"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_r4" result="shape"/>
+                </filter>
+                <linearGradient id="paint0_linear_r4" x1="7.49993" y1="25.128" x2="311.342" y2="25.128" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#4A8628"/>
+                    <stop offset="1" stop-color="#EDFFE2"/>
+                </linearGradient>
+            </defs>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="66" viewBox="0 0 64 66" fill="none" class="hero-tag-icon hero-tag-right-icon-4 hover-group" data-group="r4">
+            <circle cx="32" cy="32" r="32" fill="#B3D4A0"/>
+            <g filter="url(#filter0_d_r4_icon)">
+                <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
+            </g>
+            <g transform="translate(17.5, 16)">
+                <path d="M28.6398 16.2762L12.9987 0.366334C12.5188 -0.121851 11.7407 -0.121851 11.2609 0.366334C10.781 0.854519 10.7809 1.64595 11.2609 2.13408L12.3889 3.28151L6.71001 15.6019L1.07806 21.3306C-0.359355 22.7927 -0.359355 25.1718 1.07806 26.6339L2.816 28.4017C4.2568 29.8673 6.58891 29.8673 8.0297 28.4017L9.46958 26.9371L13.3358 30.8698C14.0355 31.5988 14.9718 32 15.9737 32C18.0065 32 19.6603 30.3178 19.6603 28.25C19.6603 27.231 19.2658 26.2785 18.5491 25.5668L15.0522 22.0098L25.7739 16.8964L26.902 18.0439C27.3819 18.5321 28.16 18.5321 28.6398 18.0439C29.1197 17.5558 29.1197 16.7643 28.6398 16.2762ZM6.29176 26.634C5.81152 27.1225 5.03419 27.1225 4.55388 26.634L2.81594 24.8662C2.3368 24.3788 2.3368 23.5858 2.81594 23.0984L7.73121 18.0987L11.207 21.6342L6.29176 26.634ZM16.8296 27.3533C17.0701 27.5908 17.2025 27.9093 17.2025 28.2501C17.2025 28.9394 16.6512 29.5001 15.9736 29.5001C15.6385 29.5001 15.3254 29.3655 15.0919 29.1209C15.0877 29.1165 11.2073 25.1694 11.2073 25.1694L12.9448 23.402C12.9448 23.402 16.8253 27.349 16.8296 27.3533ZM13.2041 20.1301L9.20992 16.0673L14.2369 5.16131L23.9258 15.0166L13.2041 20.1301Z" fill="#6A7661"/>
+                <path d="M24.1742 8.11154C24.4819 8.7268 25.2218 8.97186 25.8267 8.65886L28.3281 7.36442C28.933 7.05135 29.1739 6.29879 28.8661 5.68347C28.5584 5.06816 27.8186 4.82316 27.2136 5.13616L24.7122 6.4306C24.1073 6.74367 23.8664 7.49623 24.1742 8.11154Z" fill="#6A7661"/>
+                <path d="M21.0257 4.90885C21.6306 5.22185 22.3704 4.97678 22.6782 4.36147L23.9507 1.81702C24.2585 1.20171 24.0175 0.449143 23.4126 0.136142C22.8077 -0.176859 22.0679 0.0681422 21.7601 0.683519L20.4876 3.22796C20.1798 3.84328 20.4208 4.59584 21.0257 4.90885Z" fill="#6A7661"/>
+            </g>
+            <defs>
+                <filter id="filter0_d_r4_icon" x="2" y="6" width="60" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dy="4"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.290196 0 0 0 0 0.52549 0 0 0 0 0.156863 0 0 0 0.61 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_r4_icon"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_r4_icon" result="shape"/>
+                </filter>
+            </defs>
+        </svg>
+        <div class="hero-tag-icon-label hero-tag-right-icon-label-4 hover-group" data-group="r4">Marketing</div>
+        <div class="hero-line-dot hero-tag-right-svg-4 dot-r4" data-group="r4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <circle cx="7.5" cy="7.5" r="5.5" fill="#FAFBFD" stroke="#7C95B0" stroke-width="4"/>
+            </svg>
+        </div>
+
         Ongoing
     </div>
 
@@ -1030,13 +1070,13 @@
         <g filter="url(#filter0_g_9320_2488)">
             <circle cx="109.754" cy="109.754" r="109.754" transform="rotate(180 109.754 109.754)" fill="white" fill-opacity="0.01"/>
         </g>
-        <path d="M81.3476 3.73986C96.4382 -0.30367 112.218 -1.07889 127.633 1.46603C143.047 4.01093 157.74 9.81733 170.73 18.497C183.72 27.1767 194.708 38.5295 202.958 51.7966C211.208 65.0637 216.53 79.9392 218.569 95.4285C220.609 110.918 219.317 126.664 214.782 141.614C210.247 156.565 202.573 170.374 192.272 182.12C181.971 193.866 169.281 203.278 155.05 209.725C140.82 216.173 125.377 219.509 109.754 219.509L109.754 109.754L81.3476 3.73986Z" fill="url(#paint0_linear_9320_2488)"/>
-        <foreignObject x="14.646" y="-17.5" width="222.362" height="148.63"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(8.75px);clip-path:url(#bgblur_0_9320_2488_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="17.5" d="M32.1461 32.1463C47.729 16.5634 67.6421 6.03244 89.2933 1.92411C110.945 -2.18419 133.331 0.320442 153.539 9.11205C173.747 17.9036 190.84 32.575 202.594 51.2164C214.348 69.8578 220.218 91.6058 219.44 113.63L109.754 109.754L32.1461 32.1463Z" fill="url(#paint1_linear_9320_2488)"/>
+        <g clip-path="url(#hub-circle-clip)">
+            <path d="M 109.754 0.5 A 109.254 109.254 0 0 0 109.754 219.008 Z" fill="url(#paint_blue_left)"/>
+            <path d="M 109.754 0.5 A 109.254 109.254 0 0 1 109.754 219.008 Z" fill="url(#paint0_linear_9320_2488)"/>
+        </g>
         <circle cx="109.754" cy="109.754" r="109.254" transform="rotate(180 109.754 109.754)" stroke="#E9EEF4"/>
-        <foreignObject x="30.4583" y="30.2632" width="158.6" height="157.6"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(1.4px);clip-path:url(#bgblur_1_9320_2488_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="2.8">
         <ellipse cx="109.758" cy="109.063" rx="76.5" ry="76" fill="white" fill-opacity="0.2"/>
         <path d="M109.758 33.5632C151.735 33.5632 185.758 67.3688 185.758 109.063C185.758 150.758 151.735 184.563 109.758 184.563C67.7816 184.563 33.7583 150.758 33.7583 109.063C33.7583 67.3688 67.7816 33.5632 109.758 33.5632Z" stroke="white" stroke-opacity="0.49"/>
-    </g>
         <circle cx="110.258" cy="110.063" r="47" fill="url(#paint2_radial_9320_2488)"/>
         <g filter="url(#filter3_d_9320_2488)">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M113.292 82.0632C113.917 82.0632 114.494 82.3021 114.933 82.7003C115.371 83.0986 115.672 83.6564 115.746 84.2937L116.137 87.7103C117.079 87.9684 118.002 88.2892 118.896 88.6711C119.793 89.0532 120.663 89.496 121.502 89.999L124.091 87.9073C124.585 87.509 125.185 87.3288 125.771 87.3627C126.357 87.3967 126.932 87.644 127.376 88.0967L131.491 92.2892C131.93 92.7419 132.171 93.3271 132.206 93.9244C132.241 94.5216 132.068 95.1312 131.677 95.6342L129.565 98.351C130.015 99.1683 130.416 100.013 130.763 100.88C131.109 101.747 131.403 102.639 131.638 103.551L135.068 103.956C135.694 104.032 136.242 104.337 136.633 104.784C137.024 105.231 137.258 105.818 137.258 106.455V112.401C137.258 113.038 137.024 113.625 136.633 114.072C136.242 114.519 135.694 114.825 135.068 114.9L131.591 115.307C131.348 116.227 131.043 117.129 130.681 118.006C130.321 118.884 129.901 119.737 129.432 120.564L131.688 123.482C132.078 123.985 132.255 124.594 132.222 125.192C132.189 125.789 131.947 126.374 131.503 126.827L127.379 131.028C126.935 131.475 126.36 131.722 125.774 131.758C125.186 131.793 124.587 131.616 124.094 131.218L121.192 128.878C120.367 129.352 119.514 129.769 118.639 130.13C117.763 130.491 116.861 130.795 115.943 131.039L115.513 134.833C115.439 135.47 115.138 136.028 114.7 136.426C114.261 136.824 113.685 137.063 113.059 137.063H107.225C106.599 137.063 106.023 136.824 105.584 136.426C105.145 136.028 104.845 135.47 104.771 134.833L104.77 134.837L104.321 130.904C103.466 130.655 102.627 130.354 101.811 130.002C100.992 129.649 100.196 129.246 99.4243 128.793L96.4243 131.213C95.9306 131.611 95.3305 131.792 94.7441 131.758C94.1579 131.724 93.5831 131.476 93.1387 131.024L89.0151 126.822C88.5767 126.37 88.3351 125.784 88.3003 125.187C88.2655 124.588 88.4396 123.979 88.8306 123.476L91.2241 120.399C90.8042 119.643 90.4278 118.859 90.0962 118.058C89.7662 117.258 89.4795 116.436 89.2407 115.6L85.4482 115.152C84.8227 115.077 84.2747 114.771 83.8838 114.324C83.4929 113.877 83.2584 113.29 83.2583 112.653V106.708C83.2584 106.071 83.493 105.483 83.8838 105.037C84.2747 104.59 84.8228 104.284 85.4482 104.209L89.0444 103.791C89.2703 102.875 89.5523 101.975 89.8926 101.099C90.2314 100.223 90.6288 99.3695 91.0776 98.5435L88.8306 95.6461C88.4396 95.1431 88.2626 94.5322 88.2959 93.9348C88.3292 93.3376 88.5709 92.7524 89.0151 92.2996L93.1387 88.0982C93.5831 87.6514 94.1564 87.4041 94.7441 87.3686C95.332 87.3332 95.9306 87.5105 96.4243 87.9087L99.1108 90.0811C99.9709 89.5574 100.862 89.0963 101.781 88.701C102.701 88.3042 103.647 87.9744 104.614 87.7103L105.004 84.2937C105.078 83.6564 105.378 83.0986 105.817 82.7003C106.256 82.3021 106.832 82.0632 107.458 82.0632H113.292ZM110.258 97.341C103.631 97.341 98.2583 102.813 98.2583 109.563C98.2583 116.313 103.631 121.785 110.258 121.785C116.886 121.785 122.258 116.313 122.258 109.563C122.258 102.813 116.886 97.341 110.258 97.341Z" fill="#EAEAEA"/>
@@ -1082,9 +1122,10 @@
                 <feComposite in="displacedImageOpaque" in2="imageOpaque" operator="over" />
                 <feComposite in2="transparencyAlphaMap" operator="in" result="effect1_texture_9320_2488"/>
             </filter>
-            <clipPath id="bgblur_0_9320_2488_clip_path" transform="translate(-14.646 17.5)"><path d="M32.1461 32.1463C47.729 16.5634 67.6421 6.03244 89.2933 1.92411C110.945 -2.18419 133.331 0.320442 153.539 9.11205C173.747 17.9036 190.84 32.575 202.594 51.2164C214.348 69.8578 220.218 91.6058 219.44 113.63L109.754 109.754L32.1461 32.1463Z"/>
-            </clipPath><clipPath id="bgblur_1_9320_2488_clip_path" transform="translate(-30.4583 -30.2632)"><ellipse cx="109.758" cy="109.063" rx="76.5" ry="76"/>
-        </clipPath><filter id="filter3_d_9320_2488" x="79.2583" y="78.0632" width="62" height="63" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <clipPath id="hub-circle-clip">
+                <circle cx="109.754" cy="109.754" r="109.254"/>
+            </clipPath>
+            <filter id="filter3_d_9320_2488" x="79.2583" y="78.0632" width="62" height="63" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
             <feFlood flood-opacity="0" result="BackgroundImageFix"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
             <feOffset/>
@@ -1099,14 +1140,15 @@
                 <stop stop-color="#80C34A" stop-opacity="0"/>
                 <stop offset="1" stop-color="#80C34A"/>
             </linearGradient>
-            <linearGradient id="paint1_linear_9320_2488" x1="59.2006" y1="52.8816" x2="178.267" y2="144.011" gradientUnits="userSpaceOnUse">
-                <stop stop-color="white" stop-opacity="0.01"/>
-                <stop offset="1" stop-color="#1266B5" stop-opacity="0"/>
-            </linearGradient>
             <radialGradient id="paint2_radial_9320_2488" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(110.258 110.063) rotate(90) scale(47)">
                 <stop stop-color="#184B7F"/>
                 <stop offset="1" stop-color="#0D1F40"/>
             </radialGradient>
+            <linearGradient id="paint_blue_left" x1="109.754" y1="3.74" x2="40" y2="219.509" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#1266B5" stop-opacity="0.15"/>
+                <stop offset="0.5" stop-color="#2563A8" stop-opacity="0.7"/>
+                <stop offset="1" stop-color="#184B7F"/>
+            </linearGradient>
         </defs>
     </svg>
 
@@ -1392,6 +1434,36 @@
         <p class="card-text">Each month, we improve one priority page—new or existing. Includes content updates, SEO improvements, AI structure tuning, and UX adjustments to increase conversions.</p>
     </div>
 
+    <div class="hero-card card-r4 hover-group" data-group="r4">
+        <div class="card-icon">
+            <svg width="64" height="66" viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="32" fill="#B3D4A0"/>
+                <g filter="url(#filter0_d_r4_card)">
+                    <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
+                </g>
+                <g transform="translate(17.5, 16)">
+                    <path d="M28.6398 16.2762L12.9987 0.366334C12.5188 -0.121851 11.7407 -0.121851 11.2609 0.366334C10.781 0.854519 10.7809 1.64595 11.2609 2.13408L12.3889 3.28151L6.71001 15.6019L1.07806 21.3306C-0.359355 22.7927 -0.359355 25.1718 1.07806 26.6339L2.816 28.4017C4.2568 29.8673 6.58891 29.8673 8.0297 28.4017L9.46958 26.9371L13.3358 30.8698C14.0355 31.5988 14.9718 32 15.9737 32C18.0065 32 19.6603 30.3178 19.6603 28.25C19.6603 27.231 19.2658 26.2785 18.5491 25.5668L15.0522 22.0098L25.7739 16.8964L26.902 18.0439C27.3819 18.5321 28.16 18.5321 28.6398 18.0439C29.1197 17.5558 29.1197 16.7643 28.6398 16.2762ZM6.29176 26.634C5.81152 27.1225 5.03419 27.1225 4.55388 26.634L2.81594 24.8662C2.3368 24.3788 2.3368 23.5858 2.81594 23.0984L7.73121 18.0987L11.207 21.6342L6.29176 26.634ZM16.8296 27.3533C17.0701 27.5908 17.2025 27.9093 17.2025 28.2501C17.2025 28.9394 16.6512 29.5001 15.9736 29.5001C15.6385 29.5001 15.3254 29.3655 15.0919 29.1209C15.0877 29.1165 11.2073 25.1694 11.2073 25.1694L12.9448 23.402C12.9448 23.402 16.8253 27.349 16.8296 27.3533ZM13.2041 20.1301L9.20992 16.0673L14.2369 5.16131L23.9258 15.0166L13.2041 20.1301Z" fill="#6A7661"/>
+                    <path d="M24.1742 8.11154C24.4819 8.7268 25.2218 8.97186 25.8267 8.65886L28.3281 7.36442C28.933 7.05135 29.1739 6.29879 28.8661 5.68347C28.5584 5.06816 27.8186 4.82316 27.2136 5.13616L24.7122 6.4306C24.1073 6.74367 23.8664 7.49623 24.1742 8.11154Z" fill="#6A7661"/>
+                    <path d="M21.0257 4.90885C21.6306 5.22185 22.3704 4.97678 22.6782 4.36147L23.9507 1.81702C24.2585 1.20171 24.0175 0.449143 23.4126 0.136142C22.8077 -0.176859 22.0679 0.0681422 21.7601 0.683519L20.4876 3.22796C20.1798 3.84328 20.4208 4.59584 21.0257 4.90885Z" fill="#6A7661"/>
+                </g>
+                <defs>
+                    <filter id="filter0_d_r4_card" x="2" y="6" width="60" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.290196 0 0 0 0 0.52549 0 0 0 0 0.156863 0 0 0 0.61 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_r4_card"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_r4_card" result="shape"/>
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+        <h3 class="card-title">Marketing</h3>
+        <p class="card-text">Ads, social, and email campaigns built around your website—so every channel drives traffic back to pages that convert.</p>
+    </div>
+
     <!-- ═══════════════════════════════════════════
          MOBILE HERO  (hidden on desktop via CSS)
          ═══════════════════════════════════════════ -->
@@ -1484,8 +1556,10 @@
                         <g filter="url(#mhub-filter0)">
                             <circle cx="109.754" cy="109.754" r="109.754" transform="rotate(180 109.754 109.754)" fill="white" fill-opacity="0.01"/>
                         </g>
-                        <path d="M81.3476 3.73986C96.4382 -0.30367 112.218 -1.07889 127.633 1.46603C143.047 4.01093 157.74 9.81733 170.73 18.497C183.72 27.1767 194.708 38.5295 202.958 51.7966C211.208 65.0637 216.53 79.9392 218.569 95.4285C220.609 110.918 219.317 126.664 214.782 141.614C210.247 156.565 202.573 170.374 192.272 182.12C181.971 193.866 169.281 203.278 155.05 209.725C140.82 216.173 125.377 219.509 109.754 219.509L109.754 109.754L81.3476 3.73986Z" fill="url(#mhub-paint0)"/>
-                        <path d="M32.1461 32.1463C47.729 16.5634 67.6421 6.03244 89.2933 1.92411C110.945 -2.18419 133.331 0.320442 153.539 9.11205C173.747 17.9036 190.84 32.575 202.594 51.2164C214.348 69.8578 220.218 91.6058 219.44 113.63L109.754 109.754L32.1461 32.1463Z" fill="url(#mhub-paint1)"/>
+                        <g clip-path="url(#mhub-circle-clip)">
+                            <path d="M 109.754 0.5 A 109.254 109.254 0 0 0 109.754 219.008 Z" fill="url(#mhub-paint-blue)"/>
+                            <path d="M 109.754 0.5 A 109.254 109.254 0 0 1 109.754 219.008 Z" fill="url(#mhub-paint0)"/>
+                        </g>
                         <circle cx="109.754" cy="109.754" r="109.254" transform="rotate(180 109.754 109.754)" stroke="#E9EEF4"/>
                         <ellipse cx="109.758" cy="109.063" rx="76.5" ry="76" fill="white" fill-opacity="0.2"/>
                         <path d="M109.758 33.5632C151.735 33.5632 185.758 67.3688 185.758 109.063C185.758 150.758 151.735 184.563 109.758 184.563C67.7816 184.563 33.7583 150.758 33.7583 109.063C33.7583 67.3688 67.7816 33.5632 109.758 33.5632Z" stroke="white" stroke-opacity="0.49"/>
@@ -1545,14 +1619,18 @@
                                 <stop stop-color="#80C34A" stop-opacity="0"/>
                                 <stop offset="1" stop-color="#80C34A"/>
                             </linearGradient>
-                            <linearGradient id="mhub-paint1" x1="59.2006" y1="52.8816" x2="178.267" y2="144.011" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="white" stop-opacity="0.01"/>
-                                <stop offset="1" stop-color="#1266B5" stop-opacity="0"/>
-                            </linearGradient>
+                            <clipPath id="mhub-circle-clip">
+                                <circle cx="109.754" cy="109.754" r="109.254"/>
+                            </clipPath>
                             <radialGradient id="mhub-paint2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(110.258 110.063) rotate(90) scale(47)">
                                 <stop stop-color="#184B7F"/>
                                 <stop offset="1" stop-color="#0D1F40"/>
                             </radialGradient>
+                            <linearGradient id="mhub-paint-blue" x1="109.754" y1="3.74" x2="40" y2="219.509" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#1266B5" stop-opacity="0.15"/>
+                                <stop offset="0.5" stop-color="#2563A8" stop-opacity="0.7"/>
+                                <stop offset="1" stop-color="#184B7F"/>
+                            </linearGradient>
                         </defs>
                     </svg>
                 </div>
@@ -1560,7 +1638,7 @@
                 <!-- Ongoing pill -->
                 <div class="mob-pill mob-pill-green">Ongoing</div>
 
-                <!-- ── Fan-out connector: Ongoing pill → 3 output nodes ── -->
+                <!-- ── Fan-out connector: Ongoing pill → 4 output nodes ── -->
                 <svg class="mob-connector" viewBox="0 0 343 110" fill="none">
                     <defs>
                         <linearGradient id="mg-out" x1="0%" y1="100%" x2="0%" y2="0%">
@@ -1568,22 +1646,27 @@
                             <stop offset="100%" stop-color="#5A9E2F" stop-opacity="0.9"/>
                         </linearGradient>
                     </defs>
-                    <!-- Left -->
-                    <path d="M 57 104 C 57 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
-                    <path d="M 57 104 C 57 49.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-                    <path d="M 57 104 C 57 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0s"/>
-                    <!-- Center -->
-                    <path d="M 171.5 104 C 171.5 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
-                    <path d="M 171.5 104 C 171.5 49.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-                    <path d="M 171.5 104 C 171.5 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0.22s"/>
-                    <!-- Right -->
-                    <path d="M 286 104 C 286 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
-                    <path d="M 286 104 C 286 49.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-                    <path d="M 286 104 C 286 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0.44s"/>
+                    <!-- Far left: x=43 -->
+                    <path d="M 43 104 C 43 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 43 104 C 43 49.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 43 104 C 43 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0s"/>
+                    <!-- Center-left: x=129 -->
+                    <path d="M 129 104 C 129 60.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 129 104 C 129 60.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 129 104 C 129 60.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0.18s"/>
+                    <!-- Center-right: x=214 -->
+                    <path d="M 214 104 C 214 60.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 214 104 C 214 60.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 214 104 C 214 60.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0.36s"/>
+                    <!-- Far right: x=300 -->
+                    <path d="M 300 104 C 300 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-opacity="0.15" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M 300 104 C 300 49.5, 171.5 60.5, 171.5 6" stroke="url(#mg-out)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    <path d="M 300 104 C 300 49.5, 171.5 60.5, 171.5 6" stroke="#5A9E2F" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="3 10" style="animation:mob-flow 2.8s linear infinite; animation-delay:0.54s"/>
                     <!-- Travelling dots -->
-                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0s" path="M 171.5 6 C 171.5 60.5, 57 49.5, 57 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0s"/></circle>
-                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.35s" path="M 171.5 6 L 171.5 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0.35s"/></circle>
-                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.7s" path="M 171.5 6 C 171.5 60.5, 286 49.5, 286 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0.7s"/></circle>
+                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0s" path="M 171.5 6 C 171.5 60.5, 43 49.5, 43 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0s"/></circle>
+                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.35s" path="M 171.5 6 C 171.5 60.5, 129 60.5, 129 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0.35s"/></circle>
+                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="0.7s" path="M 171.5 6 C 171.5 60.5, 214 60.5, 214 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="0.7s"/></circle>
+                    <circle r="2.2" fill="#5A9E2F"><animateMotion dur="2.8s" repeatCount="indefinite" begin="1.05s" path="M 171.5 6 C 171.5 60.5, 300 49.5, 300 104"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="2.8s" repeatCount="indefinite" begin="1.05s"/></circle>
                 </svg>
 
                 <!-- ── Bottom nodes: Ongoing outputs ── -->
@@ -1628,6 +1711,21 @@
                         </div>
                         <span class="mob-node-label">Optimization</span>
                     </div>
+                    <!-- Marketing -->
+                    <div class="mob-node" id="mn-r4">
+                        <div class="mob-node-icon">
+                            <svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="32" cy="32" r="32" fill="#B3D4A0"/>
+                                <circle cx="32" cy="32" r="26" fill="#FFFFFD"/>
+                                <g transform="translate(17.5, 16)">
+                                    <path d="M28.6398 16.2762L12.9987 0.366334C12.5188 -0.121851 11.7407 -0.121851 11.2609 0.366334C10.781 0.854519 10.7809 1.64595 11.2609 2.13408L12.3889 3.28151L6.71001 15.6019L1.07806 21.3306C-0.359355 22.7927 -0.359355 25.1718 1.07806 26.6339L2.816 28.4017C4.2568 29.8673 6.58891 29.8673 8.0297 28.4017L9.46958 26.9371L13.3358 30.8698C14.0355 31.5988 14.9718 32 15.9737 32C18.0065 32 19.6603 30.3178 19.6603 28.25C19.6603 27.231 19.2658 26.2785 18.5491 25.5668L15.0522 22.0098L25.7739 16.8964L26.902 18.0439C27.3819 18.5321 28.16 18.5321 28.6398 18.0439C29.1197 17.5558 29.1197 16.7643 28.6398 16.2762ZM6.29176 26.634C5.81152 27.1225 5.03419 27.1225 4.55388 26.634L2.81594 24.8662C2.3368 24.3788 2.3368 23.5858 2.81594 23.0984L7.73121 18.0987L11.207 21.6342L6.29176 26.634ZM16.8296 27.3533C17.0701 27.5908 17.2025 27.9093 17.2025 28.2501C17.2025 28.9394 16.6512 29.5001 15.9736 29.5001C15.6385 29.5001 15.3254 29.3655 15.0919 29.1209C15.0877 29.1165 11.2073 25.1694 11.2073 25.1694L12.9448 23.402C12.9448 23.402 16.8253 27.349 16.8296 27.3533ZM13.2041 20.1301L9.20992 16.0673L14.2369 5.16131L23.9258 15.0166L13.2041 20.1301Z" fill="#6A7661"/>
+                                    <path d="M24.1742 8.11154C24.4819 8.7268 25.2218 8.97186 25.8267 8.65886L28.3281 7.36442C28.933 7.05135 29.1739 6.29879 28.8661 5.68347C28.5584 5.06816 27.8186 4.82316 27.2136 5.13616L24.7122 6.4306C24.1073 6.74367 23.8664 7.49623 24.1742 8.11154Z" fill="#6A7661"/>
+                                    <path d="M21.0257 4.90885C21.6306 5.22185 22.3704 4.97678 22.6782 4.36147L23.9507 1.81702C24.2585 1.20171 24.0175 0.449143 23.4126 0.136142C22.8077 -0.176859 22.0679 0.0681422 21.7601 0.683519L20.4876 3.22796C20.1798 3.84328 20.4208 4.59584 21.0257 4.90885Z" fill="#6A7661"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="mob-node-label">Marketing</span>
+                    </div>
                 </div>
 
                 <!-- ── Cards (shown on tap) ── -->
@@ -1666,6 +1764,13 @@
                     <div class="mob-card-icon"><svg viewBox="0 0 64 66" fill="none"><circle cx="32" cy="32" r="32" fill="#B3D4A0"/><circle cx="32" cy="32" r="26" fill="#FFFFFD"/><path fill-rule="evenodd" clip-rule="evenodd" d="M41.5 16C42.33 16 43 16.67 43 17.5V19L43.26 19.01C45.9 19.14 48 21.32 48 24V43C48 45.76 45.76 48 43 48H21C18.32 48 16.14 45.9 16.01 43.26L16 43V24C16 21.32 18.1 19.14 20.74 19.01L21 19V17.5C21 16.67 21.67 16 22.5 16C23.33 16 24 16.67 24 17.5V19H31V17.5C31 16.67 31.67 16 32.5 16C33.33 16 34 16.67 34 17.5V19H40V17.5C40 16.67 40.67 16 41.5 16ZM19 43C19 44.1 19.9 45 21 45H43C44.1 45 45 44.1 45 43V29.5H19V43ZM24 22.5C24 23.33 23.33 24 22.5 24C21.67 24 21 23.33 21 22.5V22C19.9 22 19 22.9 19 24V26.5H45V24C45 22.9 44.1 22 43 22V22.5C43 23.33 42.33 24 41.5 24C40.67 24 40 23.33 40 22.5V22H34V22.5C34 23.33 33.33 24 32.5 24C31.67 24 31 23.33 31 22.5V22H24V22.5Z" fill="#6A7661"/><path d="M32.5 32C33.33 32 34 32.67 34 33.5V41.5C34 42.33 33.33 43 32.5 43C31.67 43 31 42.33 31 41.5V36.28L30.35 37.07C30.13 37.34 29.8 37.5 29.45 37.5C28.47 37.5 27.93 36.36 28.55 35.6L31.15 32.43C31.37 32.16 31.7 32 32.05 32C32.2 32 32.35 32 32.5 32Z" fill="#6A7661"/></svg></div>
                     <h3 class="mob-card-title">Optimization</h3>
                     <p class="mob-card-text">Each month, we improve one priority page—new or existing. Includes content updates, SEO improvements, AI structure tuning, and UX adjustments to increase conversions.</p>
+                </div>
+
+                <div class="mob-card" id="mob-card-r4">
+                    <button class="mob-card-close" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+                    <div class="mob-card-icon"><svg viewBox="0 0 64 66" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="32" fill="#B3D4A0"/><circle cx="32" cy="32" r="26" fill="#FFFFFD"/><g transform="translate(17.5, 16)"><path d="M28.6398 16.2762L12.9987 0.366334C12.5188 -0.121851 11.7407 -0.121851 11.2609 0.366334C10.781 0.854519 10.7809 1.64595 11.2609 2.13408L12.3889 3.28151L6.71001 15.6019L1.07806 21.3306C-0.359355 22.7927 -0.359355 25.1718 1.07806 26.6339L2.816 28.4017C4.2568 29.8673 6.58891 29.8673 8.0297 28.4017L9.46958 26.9371L13.3358 30.8698C14.0355 31.5988 14.9718 32 15.9737 32C18.0065 32 19.6603 30.3178 19.6603 28.25C19.6603 27.231 19.2658 26.2785 18.5491 25.5668L15.0522 22.0098L25.7739 16.8964L26.902 18.0439C27.3819 18.5321 28.16 18.5321 28.6398 18.0439C29.1197 17.5558 29.1197 16.7643 28.6398 16.2762ZM6.29176 26.634C5.81152 27.1225 5.03419 27.1225 4.55388 26.634L2.81594 24.8662C2.3368 24.3788 2.3368 23.5858 2.81594 23.0984L7.73121 18.0987L11.207 21.6342L6.29176 26.634ZM16.8296 27.3533C17.0701 27.5908 17.2025 27.9093 17.2025 28.2501C17.2025 28.9394 16.6512 29.5001 15.9736 29.5001C15.6385 29.5001 15.3254 29.3655 15.0919 29.1209C15.0877 29.1165 11.2073 25.1694 11.2073 25.1694L12.9448 23.402C12.9448 23.402 16.8253 27.349 16.8296 27.3533ZM13.2041 20.1301L9.20992 16.0673L14.2369 5.16131L23.9258 15.0166L13.2041 20.1301Z" fill="#6A7661"/><path d="M24.1742 8.11154C24.4819 8.7268 25.2218 8.97186 25.8267 8.65886L28.3281 7.36442C28.933 7.05135 29.1739 6.29879 28.8661 5.68347C28.5584 5.06816 27.8186 4.82316 27.2136 5.13616L24.7122 6.4306C24.1073 6.74367 23.8664 7.49623 24.1742 8.11154Z" fill="#6A7661"/><path d="M21.0257 4.90885C21.6306 5.22185 22.3704 4.97678 22.6782 4.36147L23.9507 1.81702C24.2585 1.20171 24.0175 0.449143 23.4126 0.136142C22.8077 -0.176859 22.0679 0.0681422 21.7601 0.683519L20.4876 3.22796C20.1798 3.84328 20.4208 4.59584 21.0257 4.90885Z" fill="#6A7661"/></g></svg></div>
+                    <h3 class="mob-card-title">Marketing</h3>
+                    <p class="mob-card-text">Ads, social, and email campaigns built around your website—so every channel drives traffic back to pages that convert.</p>
                 </div>
 
                 <!-- ── Stack row ── -->
@@ -1805,6 +1910,7 @@
             'mn-r1': 'mob-card-r1',
             'mn-r2': 'mob-card-r2',
             'mn-r3': 'mob-card-r3',
+            'mn-r4': 'mob-card-r4',
         };
         var activeNode = null;
         var backdrop = document.getElementById('mob-backdrop');
